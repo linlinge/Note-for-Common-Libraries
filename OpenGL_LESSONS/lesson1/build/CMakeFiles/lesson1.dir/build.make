@@ -52,37 +52,37 @@ include CMakeFiles/lesson1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lesson1.dir/flags.make
 
-CMakeFiles/lesson1.dir/main.o: CMakeFiles/lesson1.dir/flags.make
-CMakeFiles/lesson1.dir/main.o: ../main.cpp
+CMakeFiles/lesson1.dir/main.cpp.o: CMakeFiles/lesson1.dir/flags.make
+CMakeFiles/lesson1.dir/main.cpp.o: ../main.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/linlinge/ZJU/OpenGL_LESSONS/lesson1/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/lesson1.dir/main.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/lesson1.dir/main.o -c /home/linlinge/ZJU/OpenGL_LESSONS/lesson1/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/lesson1.dir/main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/lesson1.dir/main.cpp.o -c /home/linlinge/ZJU/OpenGL_LESSONS/lesson1/main.cpp
 
-CMakeFiles/lesson1.dir/main.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lesson1.dir/main.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/linlinge/ZJU/OpenGL_LESSONS/lesson1/main.cpp > CMakeFiles/lesson1.dir/main.i
+CMakeFiles/lesson1.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lesson1.dir/main.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/linlinge/ZJU/OpenGL_LESSONS/lesson1/main.cpp > CMakeFiles/lesson1.dir/main.cpp.i
 
-CMakeFiles/lesson1.dir/main.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lesson1.dir/main.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/linlinge/ZJU/OpenGL_LESSONS/lesson1/main.cpp -o CMakeFiles/lesson1.dir/main.s
+CMakeFiles/lesson1.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lesson1.dir/main.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/linlinge/ZJU/OpenGL_LESSONS/lesson1/main.cpp -o CMakeFiles/lesson1.dir/main.cpp.s
 
-CMakeFiles/lesson1.dir/main.o.requires:
-.PHONY : CMakeFiles/lesson1.dir/main.o.requires
+CMakeFiles/lesson1.dir/main.cpp.o.requires:
+.PHONY : CMakeFiles/lesson1.dir/main.cpp.o.requires
 
-CMakeFiles/lesson1.dir/main.o.provides: CMakeFiles/lesson1.dir/main.o.requires
-	$(MAKE) -f CMakeFiles/lesson1.dir/build.make CMakeFiles/lesson1.dir/main.o.provides.build
-.PHONY : CMakeFiles/lesson1.dir/main.o.provides
+CMakeFiles/lesson1.dir/main.cpp.o.provides: CMakeFiles/lesson1.dir/main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/lesson1.dir/build.make CMakeFiles/lesson1.dir/main.cpp.o.provides.build
+.PHONY : CMakeFiles/lesson1.dir/main.cpp.o.provides
 
-CMakeFiles/lesson1.dir/main.o.provides.build: CMakeFiles/lesson1.dir/main.o
+CMakeFiles/lesson1.dir/main.cpp.o.provides.build: CMakeFiles/lesson1.dir/main.cpp.o
 
 # Object files for target lesson1
 lesson1_OBJECTS = \
-"CMakeFiles/lesson1.dir/main.o"
+"CMakeFiles/lesson1.dir/main.cpp.o"
 
 # External object files for target lesson1
 lesson1_EXTERNAL_OBJECTS =
 
-lesson1: CMakeFiles/lesson1.dir/main.o
+lesson1: CMakeFiles/lesson1.dir/main.cpp.o
 lesson1: CMakeFiles/lesson1.dir/build.make
 lesson1: CMakeFiles/lesson1.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable lesson1"
@@ -92,7 +92,7 @@ lesson1: CMakeFiles/lesson1.dir/link.txt
 CMakeFiles/lesson1.dir/build: lesson1
 .PHONY : CMakeFiles/lesson1.dir/build
 
-CMakeFiles/lesson1.dir/requires: CMakeFiles/lesson1.dir/main.o.requires
+CMakeFiles/lesson1.dir/requires: CMakeFiles/lesson1.dir/main.cpp.o.requires
 .PHONY : CMakeFiles/lesson1.dir/requires
 
 CMakeFiles/lesson1.dir/clean:
