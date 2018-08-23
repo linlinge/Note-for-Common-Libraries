@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linlinge/ZJU/OpenGL_LESSONS/lesson1/main.cpp
+iostream
+-
+GL/glew.h
+-
+SDL2/SDL.h
+-
+
