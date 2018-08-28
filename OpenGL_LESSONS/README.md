@@ -8,56 +8,56 @@
 > /usr/lib/x86_64-linux-gnu/libglut.so  
 
 ### template for windows
-\#include <windows.h>
-\#include <gl/Gl.h>
-\#include <gl/glu.h>
-\#include <gl/glut.h>
-void myInit()
-{
+\#include <windows.h>  
+\#include <gl/Gl.h>  
+\#include <gl/glu.h>  
+\#include <gl/glut.h>  
+void myInit()  
+{  
+  
+}  
 
-}
-
-void myDisplay(void)
-{
-
-}
-
-void main(int argc,char** argv)
-{
-	glutInit(&argc,argv);
-	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
-	glutInitWindowSize(640,480);
-	glutInitWindowPosition(100,150);
-	glutCreateWindow("my first attempt");
-	glutDisplayFunc(myDisplay);
-	myInit();
-	glutMainLoop();
-}
-
-### template for linux
-\#include <windows.h>
-\#include <GL/gl.h>
-\#include <GL/glu.h>
-\#include <GL/glut.h>
-void myInit()
-{
-
-}
-
-void myDisplay(void)
-{
-
-}
-
-void main(int argc,char** argv)
-{
-        glutInit(&argc,argv);
-        glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
-        glutInitWindowSize(640,480);
-        glutInitWindowPosition(100,150);
-        glutCreateWindow("my first attempt");
-        glutDisplayFunc(myDisplay);
-        myInit();
-        glutMainLoop();
-}
+void myDisplay(void)  
+{  
+  
+}  
+  
+void main(int argc,char** argv)  
+{  
+	glutInit(&argc,argv);  
+	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);  
+	glutInitWindowSize(640,480);  
+	glutInitWindowPosition(100,150);  
+	glutCreateWindow("my first attempt");  
+	glutDisplayFunc(myDisplay);  
+	myInit();  
+	glutMainLoop();  
+}  
+  
+### template for linux  
+\#include <windows.h>  
+\#include <GL/gl.h>  
+\#include <GL/glu.h>  
+\#include <GL/glut.h>  
+void myInit()  
+{  
+  
+}  
+  
+void myDisplay(void)  
+{  
+  
+}  
+  
+void main(int argc,char** argv)  
+{  
+        glutInit(&argc,argv);  
+        glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);  
+        glutInitWindowSize(640,480);  
+        glutInitWindowPosition(100,150);  
+        glutCreateWindow("my first attempt");  
+        glutDisplayFunc(myDisplay);  
+        myInit();  
+        glutMainLoop();  
+}  
 
