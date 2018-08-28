@@ -8,10 +8,10 @@
 > /usr/lib/x86_64-linux-gnu/libglut.so  
 
 ### template for windows
-/#include <windows.h>
-/#include <gl/Gl.h>
-/#include <gl/glu.h>
-/#include <gl/glut.h>
+\#include <windows.h>
+\#include <gl/Gl.h>
+\#include <gl/glu.h>
+\#include <gl/glut.h>
 void myInit()
 {
 
@@ -35,10 +35,10 @@ void main(int argc,char** argv)
 }
 
 ### template for linux
-/#include <windows.h>
-/#include <GL/gl.h>
-/#include <GL/glu.h>
-/#include <GL/glut.h>
+\#include <windows.h>
+\#include <GL/gl.h>
+\#include <GL/glu.h>
+\#include <GL/glut.h>
 void myInit()
 {
 
