@@ -7,7 +7,7 @@
 > /usr/lib/x86_64-linux-gnu/libGLU.so  
 > /usr/lib/x86_64-linux-gnu/libglut.so  
 
-### template for windows
+### Template for Windows
 \#include <windows.h>  
 \#include <gl/Gl.h>  
 \#include <gl/glu.h>  
@@ -34,7 +34,7 @@ void main(int argc,char** argv)
 	glutMainLoop();  
 }  
   
-### template for linux  
+### Template for Linux  
 \#include <windows.h>  
 \#include <GL/gl.h>  
 \#include <GL/glu.h>  
