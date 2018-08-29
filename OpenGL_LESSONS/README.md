@@ -15,15 +15,14 @@
 void myInit()  
 {  
   glClearColor(0.5, 1, 0.6, 0.1);
-  glClear(GL_COLOR_BUFFER_BIT);
+  glClear(GL_COLOR_BUFFER_BIT);  
 
-  // 把着色模式设置为单调着色
-  //glShadeModel(GL_FLAT); 
-  //glShadeModel(GL_SMOOTH); 
-  //glFrontFace(GL_CW);
-  glOrtho(-1, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
-
-  glRectf(-0.5f, -0.5f, 0.5f, 0.5f);
+  // 把着色模式设置为单调着色  
+  //glShadeModel(GL_FLAT);   
+  //glShadeModel(GL_SMOOTH);   
+  //glFrontFace(GL_CW);  
+  glOrtho(-1, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);  
+  glRectf(-0.5f, -0.5f, 0.5f, 0.5f);  
 
   /*if (OUTPUT_MODE == 0) {*/
   //	glFlush();//单缓存GLUT_SINGLE时使用
