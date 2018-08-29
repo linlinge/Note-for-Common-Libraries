@@ -24,12 +24,12 @@ void myInit()
   glOrtho(-1, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);  
   glRectf(-0.5f, -0.5f, 0.5f, 0.5f);  
 
-  /*if (OUTPUT_MODE == 0) {*/
-  //	glFlush();//单缓存GLUT_SINGLE时使用
-  //}
-  //else {
-	glutSwapBuffers();//因为使用的是双缓存GLUT_DOUBLE，所以这里必须要交换缓存才会显示
-  //}
+  /*if (OUTPUT_MODE == 0) {*/  
+  //	glFlush();//单缓存GLUT_SINGLE时使用  
+  //}  
+  //else {  
+	glutSwapBuffers();//因为使用的是双缓存GLUT_DOUBLE，所以这里必须要交换缓存才会显示  
+  //}  
 }  
 
 void myDisplay(void)  
