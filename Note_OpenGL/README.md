@@ -1,3 +1,4 @@
+# <center> OpenGL Tutorial </center>  
 ## Installation and Configuration  
 ### Codeblocks  
 * 1. Go Codeblocks with settings -> compiler -> Linker settings
