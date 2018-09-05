@@ -57,12 +57,13 @@ Adding password for user yourusername
 * 1	发现服务器无法连接?  
 问题分析：这种情况可能是由于服务的的防火墙开启，导致远程访问被屏蔽，因此需要关闭防火墙和selinux  
 解决方案：  
+```
 //close firewall
-\# systemctl stop firewalld.service  
-\# systemctl disable firewalld.service  
-\# vim /etc/selinux/config  //disable selinux  
-\# reboot
-
+# systemctl stop firewalld.service  
+# systemctl disable firewalld.service  
+# vim /etc/selinux/config  //disable selinux  
+# reboot
+```
 
 * 2.问题2  
  
