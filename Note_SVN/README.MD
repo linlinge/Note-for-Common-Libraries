@@ -1,3 +1,4 @@
+# <center>SVN Tutorial</center>
 #	Environment  
 CentOS 7.4  
 Subversion 1.10  
@@ -34,8 +35,9 @@ LoadModule authz_svn_module   modules/mod_authz_svn.so`
         AuthUserFile /etc/svn-auth-conf  
         Require valid-user    
 </Location>
-
+```
 ## step4: add user
+```
 # htpasswd -cm /etc/svn-auth-conf yourusername
 New password:
 Re-type new password:
@@ -53,7 +55,7 @@ Adding password for user yourusername
 # systemctl restart httpd
 ```
  
-# 问题汇总
+# Questions
 * 1	发现服务器无法连接?  
 问题分析：这种情况可能是由于服务的的防火墙开启，导致远程访问被屏蔽，因此需要关闭防火墙和selinux  
 解决方案：  
@@ -65,7 +67,7 @@ Adding password for user yourusername
 # reboot
 ```
 
-* 2.问题2  
+* 2 问题2  
  
 
 
