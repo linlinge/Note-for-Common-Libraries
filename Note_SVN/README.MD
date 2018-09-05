@@ -18,7 +18,7 @@ https://serverfault.com/questions/625579/svn-cant-open-file-var-www-svn-repo-db-
 \# chkconfig httpd on
 
 ## step3: Subversion’s apache configurations
-```
+```javascript
 # vim /etc/httpd/conf.d/subversion.conf
 # Make sure you uncomment the following if they are commented out    
 LoadModule dav_svn_module     modules/mod_dav_svn.so
