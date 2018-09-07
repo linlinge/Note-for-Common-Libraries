@@ -1,12 +1,12 @@
 # <center>PCL Tutorial</center>  
-## Method 1: Install with Command
+## Method 1: Install with Command (ubuntu & kdevelop)
 ```
 # sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
 # sudo apt-get update
 # sudo apt-get install libpcl-all
 ```
 
-## Method 2: Installation with Source Code
+## Method 2: Installation with Source Code (ubuntu & QT)
 ### STEP1: compile and install pcl source file
 ```
 # git clone https://github.com/PointCloudLibrary/pcl.git
