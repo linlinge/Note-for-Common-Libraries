@@ -14,11 +14,11 @@ https://serverfault.com/questions/625579/svn-cant-open-file-var-www-svn-repo-db-
 ## step1: Installation Packages  
 \# yum install mod_dav_svn subversion  
 
-## step2: apache  
+## step2: Apache  
 \# systemctl start httpd  
 \# chkconfig httpd on
 
-## step3: Subversion’s apache configurations
+## step3: Subversion’s Apache Configurations
 ```
 # vim /etc/httpd/conf.d/subversion.conf
 # Make sure you uncomment the following if they are commented out    
@@ -36,7 +36,7 @@ LoadModule authz_svn_module   modules/mod_authz_svn.so`
         Require valid-user    
 </Location>
 ```
-## step4: add user
+## step4: Add User
 ```
 # htpasswd -cm /etc/svn-auth-conf yourusername
 New password:
@@ -44,7 +44,7 @@ Re-type new password:
 Adding password for user yourusername
 ```
 
-## step5: Configure your repository  
+## step5: Configure Your Repository  
 ```
 # cd /var/ww
 # mkdir svn

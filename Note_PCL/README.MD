@@ -1,14 +1,14 @@
 # <center>PCL Tutorial</center>  
-## Method 1: Install with Command 
-''' 
+## Method 1: Install with Command
+```
 # sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
 # sudo apt-get update
 # sudo apt-get install libpcl-all
-'''
+```
 
 ## Method 2: Installation with Source Code
-### compile and install pcl source file
-'''
+### STEP1: compile and install pcl source file
+```
 # git clone https://github.com/PointCloudLibrary/pcl.git
 # cd pcl
 # mkdir build
@@ -38,10 +38,10 @@
 -- tools
 
 # make install
-'''
+```
 
-### configure qt pro
-'''
+### STEP2: configure QT .pro file
+```
 #Eigen
 INCLUDEPATH += /usr/include/eigen3
 
@@ -60,11 +60,10 @@ INCLUDEPATH += /usr/local/include/pcl-1.8
 
 #PCL Lib
 LIBS        += /usr/local/lib/libpcl_*.so \
-'''
+```
 
-
-### example code
-'''
+### STEP3: example code
+```
 #include <iostream>
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
@@ -88,7 +87,7 @@ int main(int argc, char** argv)
     while(!viewer.wasStopped());
     return (0);
 }
-'''
+```
 
 
 
