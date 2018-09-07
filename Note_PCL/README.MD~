@@ -46,7 +46,7 @@
 INCLUDEPATH += /usr/include/eigen3
 
 #Vtk
-INCLUDEPATH += /usr/include/vtk-5.8
+INCLUDEPATH += /usr/include/vtk-5.10
 
 LIBS += /usr/lib/libvtk*.so
 
