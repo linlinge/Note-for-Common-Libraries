@@ -1,13 +1,13 @@
-# <center>PCL Tutorial</center>  
-## Method 1: Install with Command (ubuntu & kdevelop)
+# <center>PCL Installation and Configuration</center>
+## Environment 1: ubuntu & kdevelop & cmake
 ```
 # sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
 # sudo apt-get update
 # sudo apt-get install libpcl-all
 ```
 
-## Method 2: Installation with Source Code (ubuntu & QT)
-### STEP1: compile and install pcl source file
+## Environment 2: ubuntu & QT
+### STEP1: Compile and Install PCL Source File
 ```
 # git clone https://github.com/PointCloudLibrary/pcl.git
 # cd pcl
@@ -40,7 +40,7 @@
 # make install
 ```
 
-### STEP2: configure QT .pro file
+### STEP2: Configure QT .pro File
 ```
 #Eigen
 INCLUDEPATH += /usr/include/eigen3
@@ -62,7 +62,7 @@ INCLUDEPATH += /usr/local/include/pcl-1.8
 LIBS        += /usr/local/lib/libpcl_*.so \
 ```
 
-### STEP3: example code
+### STEP3: Example
 ```
 #include <iostream>
 #include <pcl/io/pcd_io.h>
