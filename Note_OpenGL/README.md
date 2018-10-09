@@ -80,6 +80,6 @@ int main(int argc,char** argv)
         glutDisplayFunc(myDisplay);  
         myInit();  
         glutMainLoop();
-		return 0;  
+        return 0;  
 }
 ```
