@@ -56,7 +56,6 @@ void main(int argc,char** argv)
 > /usr/lib/x86_64-linux-gnu/libglut.so  
 
 ``` 
-#include <windows.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
