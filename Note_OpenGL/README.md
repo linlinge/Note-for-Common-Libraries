@@ -1,5 +1,5 @@
 #  OpenGL Installation and Configuration   
-## vs2017
+## windows7 & vs2017
 ### required
 glut and glew
 
