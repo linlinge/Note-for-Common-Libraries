@@ -8,11 +8,11 @@ Step2: Add the those two file into the project
 Step3: add printsupport into .pro
 
 step4: add a widget into your project
-<center>![](https://i.imgur.com/whGGEnV.png)</center>  
+<center>![](./step4.png)</center>  
 
 
 step5: rename the widget object to customPlot
-<center>![](https://i.imgur.com/aK4eFU2.png)</center>
+<center>![](./step5.png)</center>
 
 step6: add the following code  
 ```
