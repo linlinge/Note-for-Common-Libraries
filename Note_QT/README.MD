@@ -35,4 +35,15 @@ step6: add the following code
     ui->customPlot->replot();
 ```
 
+step7: note
+you should add c++11 into .pro  
+```
+CONFIG+= c++11
+```  
+you should also add the following code
+```  
+using namespace std;
+```
+
+
 
