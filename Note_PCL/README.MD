@@ -9,6 +9,9 @@
 ## Environment 2: ubuntu & QT
 ### STEP1: Compile and Install PCL Source File
 ```
+# sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
+# sudo apt-get update
+# sudo apt-get install libpcl-all
 # git clone https://github.com/PointCloudLibrary/pcl.git
 # cd pcl
 # mkdir build
