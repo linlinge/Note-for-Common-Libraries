@@ -9,9 +9,7 @@
 ## Environment 2: ubuntu & QT
 ### STEP1: Compile and Install PCL Source File
 ```
-# sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
-# sudo apt-get update
-# sudo apt-get install libpcl-all
+# apt-get install cmake g++   libboost1.58-all-dev libeigen3-dev libflann-dev python libusb-1.0-0-dev libudev-dev freeglut3-dev doxygen graphviz libpng12-dev libgtest-dev libxmu-dev libxi-dev libpcap-dev libqhull-dev libvtk5-qt4-dev python-vtk libvtk-java  
 # git clone https://github.com/PointCloudLibrary/pcl.git
 # cd pcl
 # mkdir build
