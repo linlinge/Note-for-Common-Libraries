@@ -9,7 +9,7 @@
 ## Environment 2: ubuntu & QT
 ### STEP1: Compile and Install PCL Source File
 ```
-# apt-get install cmake g++   libboost-all-dev libeigen3-dev   
+# apt-get install cmake g++ libboost-all-dev libeigen3-dev   
 # apt-get install libflann-dev python libusb-1.0-0-dev libudev-dev  
 # apt-get install freeglut3-dev doxygen graphviz libpng12-dev libgtest-dev  
 # apt-get install libxmu-dev libxi-dev libpcap-dev libqhull-dev libvtk5-qt4-dev  
