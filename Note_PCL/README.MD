@@ -1,73 +1,63 @@
 # <center>PCL Installation and Configuration</center>
-## Environment 1: ubuntu & kdevelop & cmake
+## STEP 1: ubuntu & qt & cmake
 ```
 # sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
 # sudo apt-get update
 # sudo apt-get install libpcl-all
 ```
-
-## Environment 2: ubuntu & QT
-### STEP1: Compile and Install PCL Source File
+## STEP 2: CMakeLists.txt
 ```
-# apt-get install cmake g++ libboost-all-dev libeigen3-dev   
-# apt-get install libflann-dev python libusb-1.0-0-dev libudev-dev  
-# apt-get install freeglut3-dev doxygen graphviz libpng12-dev libgtest-dev  
-# apt-get install libxmu-dev libxi-dev libpcap-dev libqhull-dev libvtk5-qt4-dev  
-# apt-get install python-vtk libvtk-java  
-# git clone https://github.com/PointCloudLibrary/pcl.git
-# cd pcl
-# mkdir build
-# cmake-gui ./
-// make sure that the following module is exist
--- common
--- kdtree
--- octree
--- search
--- sample_consensus
--- filters
--- tracking
--- geometry
--- io
--- 2d
--- features
--- visualization
--- ml
--- segmentation
--- people
--- keypoints
--- outofcore
--- stereo
--- surface
--- registration
--- recognition
--- tools
+cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
-# make install
+project(cloud_viewer)
+
+find_package(PCL 1.2 REQUIRED)
+
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+add_executable (cloud_viewer main.cpp)
+target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
 ```
-
-### STEP2: Configure QT .pro File
+## STEP 3: EXAMPLE 1 with PCLVisualizer
 ```
-#Eigen
-INCLUDEPATH += /usr/include/eigen3
+#include <iostream>
+#include <pcl/point_types.h>
+#include <pcl/io/ply_io.h>
+#include <pcl/visualization/cloud_viewer.h>
+#include <pcl/kdtree/kdtree_flann.h>
+#include <pcl/features/normal_3d.h>
+#include <pcl/surface/gp3.h>
+#include <pcl/visualization/pcl_visualizer.h>
+int main(int argc, char** argv)
+{
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 
-#Vtk
-INCLUDEPATH += /usr/include/vtk-5.8
+    if (pcl::io::loadPLYFile<pcl::PointXYZ>("/home/linlinge/Desktop/1.ply", *cloud) == -1) //* load the file
+    {
+        PCL_ERROR("Couldn't read file test_pcd.pcd \n");
+        return (-1);
+    }
+    boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+     viewer->setBackgroundColor (0.33, 0.97, 0.59);
+     //设置点云颜色，该处为单一颜色设置
+     pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> single_color(cloud, 255, 255, 255);
 
-LIBS += /usr/lib/libvtk*.so
+     //添加需要显示的点云数据
+     viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
 
-#Boost
-INCLUDEPATH += /usr/include/boost
 
-LIBS += /usr/lib/x86_64-linux-gnu/libboost_*.so
-
-#PCL Header
-INCLUDEPATH += /usr/local/include/pcl-1.8
-
-#PCL Lib
-LIBS        += /usr/local/lib/libpcl_*.so \
+    //viewer->showCloud(cloud);
+    while(!viewer->wasStopped()){
+        viewer->spinOnce (100);
+        boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+    }
+  return (0);
+}
 ```
 
-### STEP3: Example
+## STEP 3: Example 2 with PointCloud
 ```
 #include <iostream>
 #include <pcl/io/pcd_io.h>
