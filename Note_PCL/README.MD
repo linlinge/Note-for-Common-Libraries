@@ -85,7 +85,7 @@ int main(int argc, char** argv)
 ``` 
 # User Manual  
 ## viewer operation  
-1> define viewer
+> define viewer
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 
 1> define background
