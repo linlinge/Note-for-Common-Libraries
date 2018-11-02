@@ -120,9 +120,9 @@ viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
 
 // Show Point Cloud
  while(!viewer->wasStopped()){
-        //viewer->spinOnce (100);
-        viewer->spin();
-        boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+    //viewer->spinOnce (100);
+    viewer->spin();
+    boost::this_thread::sleep (boost::posix_time::microseconds (100000));
  }
 ```
 * multi-color  
@@ -130,13 +130,11 @@ viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
 
-//设置点云颜色，该处为单一颜色设置
-//pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZRGB> rgb(cloud);
+//set multi-color for point cloud
+pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> multi_color(cloud);
 
-pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(cloud);
-
-//添加需要显示的点云数据
-viewer->addPointCloud<pcl::PointXYZRGB> (cloud, rgb, "sample cloud");
+//add the demostration point cloud data
+viewer->addPointCloud<pcl::PointXYZRGB> (cloud, multi_color, "sample cloud");
 
 while(!viewer->wasStopped()){
 //viewer->spinOnce (100);
@@ -144,5 +142,3 @@ viewer->spin();
 boost::this_thread::sleep (boost::posix_time::microseconds (100000));
 }
 ```
-
-
