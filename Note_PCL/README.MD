@@ -84,29 +84,32 @@ int main(int argc, char** argv)
 }
 ``` 
 # 2. User Manual  
+## Point Cloud Operation  
+```
+pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+// load the file
+if (pcl::io::loadPLYFile<pcl::PointXYZ>("/home/linlinge/Desktop/1.ply", *cloud) == -1) 
+{
+	PCL_ERROR("Couldn't read file test_pcd.pcd \n");
+	return (-1);
+}
+```
 ## Viewer Operation  
-### Define Viewer  
 ```
+// Define Viewer
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
-```
 
-### Define Background  
-```
+// Define Background
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
-```
 
-### Set Point Cloud Color  
-```
+//Set Point Cloud Color
 pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> single_color(cloud, 255, 255, 255);
-```
 
-### Add Point Cloud to Viewer  
-```
+// Add Point Cloud to Viewer
 viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
-```
 
-### Show Point Cloud  
-```
+// Show Point Cloud
  while(!viewer->wasStopped()){
         //viewer->spinOnce (100);
         viewer->spin();
