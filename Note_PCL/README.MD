@@ -84,31 +84,23 @@ int main(int argc, char** argv)
 }
 ``` 
 # User Manual  
-## viewer operation  
-### define viewer  
+## Viewer Operation  
+### Define Viewer  
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 
-### define background  
+### Define Background  
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
 
-### set point cloud color  
+### Set Point Cloud Color  
 pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> single_color(cloud, 255, 255, 255);
 
-### add point cloud to viewer  
+### Add Point Cloud to Viewer  
 viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
 
-### show point cloud  
+### Show Point Cloud  
  while(!viewer->wasStopped()){
         //viewer->spinOnce (100);
         viewer->spin();
         boost::this_thread::sleep (boost::posix_time::microseconds (100000));
  }
-
-
-
-
-
-
-
-
 
