@@ -1,4 +1,4 @@
-# <center>PCL Installation and Configuration</center>
+# 1. PCL Installation and Configuration
 ## STEP 1: ubuntu & qt & cmake
 ```
 # sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
@@ -83,24 +83,33 @@ int main(int argc, char** argv)
     return (0);
 }
 ``` 
-# User Manual  
+# 2. User Manual  
 ## Viewer Operation  
 ### Define Viewer  
+```
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+```
 
 ### Define Background  
+```
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
+```
 
 ### Set Point Cloud Color  
+```
 pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> single_color(cloud, 255, 255, 255);
+```
 
 ### Add Point Cloud to Viewer  
+```
 viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
+```
 
 ### Show Point Cloud  
+```
  while(!viewer->wasStopped()){
         //viewer->spinOnce (100);
         viewer->spin();
         boost::this_thread::sleep (boost::posix_time::microseconds (100000));
  }
-
+```
