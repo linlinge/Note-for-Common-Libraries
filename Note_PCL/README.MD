@@ -84,18 +84,27 @@ int main(int argc, char** argv)
 }
 ``` 
 # 2. User Manual  
-## Point Cloud Operation  
+## Read  
+* Black-white
 ```
 pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-
-// load the file
 if (pcl::io::loadPLYFile<pcl::PointXYZ>("/home/linlinge/Desktop/1.ply", *cloud) == -1) 
 {
 	PCL_ERROR("Couldn't read file test_pcd.pcd \n");
 	return (-1);
 }
 ```
-## Viewer Operation  
+* colorful
+```
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
+if (pcl::io::loadPLYFile<pcl::PointXYZRGB>("/home/linlinge/Desktop/1.ply", *cloud) == -1)
+{
+        PCL_ERROR("Couldn't read file test_pcd.pcd \n");
+        return (-1);
+}
+```
+## Display  
+* single color
 ```
 // Define Viewer
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
@@ -116,3 +125,24 @@ viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
         boost::this_thread::sleep (boost::posix_time::microseconds (100000));
  }
 ```
+* multi-color  
+```
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+viewer->setBackgroundColor (0.33, 0.97, 0.59);
+
+//设置点云颜色，该处为单一颜色设置
+//pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZRGB> rgb(cloud);
+
+pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(cloud);
+
+//添加需要显示的点云数据
+viewer->addPointCloud<pcl::PointXYZRGB> (cloud, rgb, "sample cloud");
+
+while(!viewer->wasStopped()){
+//viewer->spinOnce (100);
+viewer->spin();
+boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+}
+```
+
+
