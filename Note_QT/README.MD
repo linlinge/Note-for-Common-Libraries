@@ -1,7 +1,7 @@
 # Install
-'''
+```
 apt-get install qt5-default qtcreator
-'''
+```
 
 # <center> Configuration QCustomPlot </center>
 ## QCustonPlot (Ubuntu & QT)
