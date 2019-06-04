@@ -20,7 +20,13 @@ add_definitions(${PCL_DEFINITIONS})
 add_executable (cloud_viewer main.cpp)
 target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
 ```
-## STEP 3: EXAMPLE 1 with PCLVisualizer
+## Examples 
+### Example1: PLY read and write
+```
+
+```
+
+### Example1: PCLVisualizer
 ```
 #include <iostream>
 #include <pcl/point_types.h>
@@ -57,7 +63,7 @@ int main(int argc, char** argv)
 }
 ```
 
-## STEP 3: Example 2 with PointCloud
+### Example 2: PointCloud
 ```
 #include <iostream>
 #include <pcl/io/pcd_io.h>
