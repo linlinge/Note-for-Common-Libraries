@@ -103,8 +103,9 @@ if (pcl::io::loadPLYFile<pcl::PointXYZRGB>("/home/linlinge/Desktop/1.ply", *clou
         return (-1);
 }
 ```
+
 ## Display  
-* single color
+###single color
 ```
 // Define Viewer
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
@@ -119,13 +120,14 @@ pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> single_color(clo
 viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
 
 // Show Point Cloud
- while(!viewer->wasStopped()){
+ while(!viewer->wasStopped())
+{
     //viewer->spinOnce (100);
     viewer->spin();
     boost::this_thread::sleep (boost::posix_time::microseconds (100000));
  }
 ```
-* multi-color  
+### multi-color  
 ```
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
@@ -136,9 +138,10 @@ pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> multi_color
 //add the demostration point cloud data
 viewer->addPointCloud<pcl::PointXYZRGB> (cloud, multi_color, "sample cloud");
 
-while(!viewer->wasStopped()){
-//viewer->spinOnce (100);
-viewer->spin();
-boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+while(!viewer->wasStopped())
+{
+	//viewer->spinOnce (100);
+	viewer->spin();
+	boost::this_thread::sleep (boost::posix_time::microseconds (100000));
 }
 ```
