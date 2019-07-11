@@ -3,7 +3,10 @@
 ```
 # sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
 # sudo apt-get update
+// old version ubuntu
 # sudo apt-get install libpcl-all
+// ubuntu 18.04 
+# sudo apt-get install libpcl-dev
 ```
 ## STEP 2: CMakeLists.txt
 ```
@@ -19,11 +22,6 @@ add_definitions(${PCL_DEFINITIONS})
 
 add_executable (cloud_viewer main.cpp)
 target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
-```
-## Examples 
-### Example1: PLY read and write
-```
-
 ```
 
 ### Example1: PCLVisualizer
