@@ -145,3 +145,8 @@ while(!viewer->wasStopped())
 	boost::this_thread::sleep (boost::posix_time::microseconds (100000));
 }
 ```
+### show coordinate  
+```
+pcl::visualization::PCLVisualizer viewer;
+viewer.addCoordinateSystem(1.0f);
+```
