@@ -1,8 +1,6 @@
 # ubuntu 18.04  
 ## Installation  
-Download package from the following website:  
-https://opencv.org/releases/  
-
+Download package from the following website: https://opencv.org/releases/  
 ```
 # mkdir build
 # cd build
