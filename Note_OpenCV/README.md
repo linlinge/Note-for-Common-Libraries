@@ -1,4 +1,4 @@
-# ubuntu 18.04  
+# <center> Ubuntu 18.04 </center>  
 ## Installation  
 Download package from the following website: https://opencv.org/releases/  
 ```
