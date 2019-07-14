@@ -1,6 +1,6 @@
 # ubuntu 18.04  
 ## Installation  
-website:  
+Download package from the following website:  
 https://opencv.org/releases/  
 
 ```
@@ -28,7 +28,7 @@ find_package(OpenCV REQUIRED)
 # Declare the executable target built from your sources
 add_executable(opencv_example main.cpp)
 # Link your application with OpenCV libraries
-target_link_libraries(opencv_example LINK_PRIVATE ${OpenCV_LIBS})
+target_link_libraries(opencv_example ${OpenCV_LIBS})
 ```
 
 main.cpp  
