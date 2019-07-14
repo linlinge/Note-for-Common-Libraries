@@ -39,8 +39,16 @@ using namespace std;
 using namespace cv;
 int main()
 {
-	Mat img=imread("1.jpg");
-	imwrite("2.jpg",img);
+	// create image
+	/*
+		CV_8UC1 8位1通道
+		CV_8UC3 8位3通道
+		CV_32FC1 32位1通道
+		CV_64FC1 64位1通道
+	*/
+
+	Mat img(5, 5, CV_8UC3, Scalar(128,0,0));
+	imwrite("1.jpg",img);
 	return 0;
 }
 ```
