@@ -148,5 +148,7 @@ while(!viewer->wasStopped())
 ### show coordinate  
 ```
 pcl::visualization::PCLVisualizer viewer;
+// make sure addCoordinateSystem is before setBackgroundColor
 viewer.addCoordinateSystem(1.0f);
+viewer.setBackgroundColor(1.0, 1.0, 1.0);  //set background color
 ```
