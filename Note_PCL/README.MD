@@ -105,7 +105,7 @@ if (pcl::io::loadPLYFile<pcl::PointXYZRGB>("/home/linlinge/Desktop/1.ply", *clou
 ```
 
 ## Display  
-### single color
+### Single Color
 ```
 // Define Viewer
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
@@ -127,7 +127,7 @@ viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
     boost::this_thread::sleep (boost::posix_time::microseconds (100000));
  }
 ```
-### multi-color  
+### Multi-color  
 ```
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
@@ -145,7 +145,7 @@ while(!viewer->wasStopped())
 	boost::this_thread::sleep (boost::posix_time::microseconds (100000));
 }
 ```
-### show coordinate  
+### Show Coordinate  
 ```
 pcl::visualization::PCLVisualizer viewer;
 // make sure addCoordinateSystem is before setBackgroundColor
