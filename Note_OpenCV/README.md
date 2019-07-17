@@ -9,7 +9,7 @@ Download package from the following website: https://opencv.org/releases/
 # make install
 ```
 
-## Test  
+## Example
 CMakeLists.txt
 ```
 # cmake needs this line
@@ -49,4 +49,16 @@ int main()
 	imwrite("1.jpg",img);
 	return 0;
 }
+```
+
+## Common Usage  
+### create Mat  
+```
+// Method1: Init and create at the same time
+Mat M(7,7,CV_32FC2,Scalar(1,3));
+Mat img(5, 5, CV_8UC3, Scalar(128,0,0));
+
+// Method2: create first, then init
+Mat M;
+M.create(100,60,CV_8UC(15));
 ```
