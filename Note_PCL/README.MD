@@ -85,6 +85,7 @@ int main(int argc, char** argv)
 ``` 
 # 2. User Manual  
 ## Read  
+### PLY Format  
 * Black-white
 ```
 pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
@@ -102,7 +103,19 @@ if (pcl::io::loadPLYFile<pcl::PointXYZRGB>("/home/linlinge/Desktop/1.ply", *clou
         PCL_ERROR("Couldn't read file test_pcd.pcd \n");
         return (-1);
 }
+```  
+
+### PCD Format    
 ```
+typedef  pcl::PointXYZRGBA PointType;
+#include <pcl/io/pcd_io.h>
+pcl::PCDReader reader; 
+reader.read<PointType> ("table_scene_lms400.pcd", *cloud);
+
+pcl::PCDWriter writer;
+writer.write<PointType> ("table_scene_lms400_inliers.pcd", *cloud_filtered, false);
+```
+
 
 ## Display  
 ### Single Color
