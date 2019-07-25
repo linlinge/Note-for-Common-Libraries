@@ -108,10 +108,13 @@ if (pcl::io::loadPLYFile<pcl::PointXYZRGB>("/home/linlinge/Desktop/1.ply", *clou
 ### PCD Format    
 ```
 typedef  pcl::PointXYZRGBA PointType;
-#include <pcl/io/pcd_io.h>
+#include <pcl/io/pcd_io.h> 
+
+// read PCD
 pcl::PCDReader reader; 
 reader.read<PointType> ("table_scene_lms400.pcd", *cloud);
 
+// write PCD
 pcl::PCDWriter writer;
 writer.write<PointType> ("table_scene_lms400_inliers.pcd", *cloud_filtered, false);
 ```
