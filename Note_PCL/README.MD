@@ -85,7 +85,12 @@ int main(int argc, char** argv)
 ``` 
 # 2. User Manual  
 ## Read  
-### PLY Format  
+### PLY Format 
+* Read and Write 	
+```
+
+```
+ 
 * Black-white
 ```
 pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);

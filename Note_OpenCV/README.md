@@ -9,7 +9,7 @@ Download package from the following website: https://opencv.org/releases/
 # make install
 ```
 
-## Example
+## Example (CMake)
 CMakeLists.txt
 ```
 # cmake needs this line
@@ -51,8 +51,11 @@ int main()
 }
 ```
 
+## Example (Python)  
+
+
 ## Common Usage  
-### create Mat  
+### Create Mat  
 ```
 // Method1: Init and create at the same time
 Mat M(7,7,CV_32FC2,Scalar(1,3));
