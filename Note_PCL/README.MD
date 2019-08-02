@@ -86,29 +86,17 @@ int main(int argc, char** argv)
 # 2. User Manual  
 ## Read  
 ### PLY Format 
-* Read and Write 	
 ```
-
-```
- 
-* Black-white
-```
-pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-if (pcl::io::loadPLYFile<pcl::PointXYZ>("/home/linlinge/Desktop/1.ply", *cloud) == -1) 
+typedef pcl::PointXYZRGBA PointType;
+pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
+if (pcl::io::loadPLYFile<PointType>("/home/linlinge/Desktop/1.ply", *cloud) == -1) 
 {
 	PCL_ERROR("Couldn't read file test_pcd.pcd \n");
 	return (-1);
 }
+pcl::io::savePLYFileASCII("1.ply",*cloud);
 ```
-* colorful
-```
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
-if (pcl::io::loadPLYFile<pcl::PointXYZRGB>("/home/linlinge/Desktop/1.ply", *cloud) == -1)
-{
-        PCL_ERROR("Couldn't read file test_pcd.pcd \n");
-        return (-1);
-}
-```  
+
 
 ### PCD Format    
 ```
