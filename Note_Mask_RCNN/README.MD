@@ -1,12 +1,12 @@
 ## Tutorial for Mask RCNN  
 # Dependencies  
-// install dependencies 
+// install dependencies   
 \# pip install -r requirements.txt
 
-// clone code from github
+// clone code from github  
 \# git clone https://github.com/matterport/Mask_RCNN.git
 
-// install 
+// install  
 \# python setup.py install 
 
 //  download pre-trained weights 
