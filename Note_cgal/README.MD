@@ -1,3 +1,11 @@
+# CGGAL Tutorial 
+## Installation
+	// In linux system 
+	# sudo apt-get install libcgal-dev
+	// Install demo
+	# sudo apt-get install libcgal-demo
+
+
 ## Example 1: read and write ply file  
 main.cpp
 ```
