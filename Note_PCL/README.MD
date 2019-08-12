@@ -20,7 +20,7 @@ add_executable (cloud_viewer main.cpp)
 target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
 ```
 
-### Example1: PCLVisualizer
+### Example 01: PCLVisualizer
 ```
 #include <iostream>
 #include <pcl/point_types.h>
@@ -57,7 +57,7 @@ int main(int argc, char** argv)
 }
 ```
 
-### Example 2: PointCloud
+### Example 02: PointCloud
 ```
 #include <iostream>
 #include <pcl/io/pcd_io.h>
@@ -83,6 +83,45 @@ int main(int argc, char** argv)
     return (0);
 }
 ``` 
+### Example 03: Search K-nearest or nearest neighbour
+	int K=10;
+	vector<int> pointIdxNKNSearch(K);
+	vector<float> pointNKNSquaredDistance(K); 
+	
+	if ( kdtree.nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 ){
+		for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
+		  std::cout << "    "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
+					<< " " << cloud->points[ pointIdxNKNSearch[i] ].y 
+					<< " " << cloud->points[ pointIdxNKNSearch[i] ].z 
+					<< " (squared distance: " << pointNKNSquaredDistance[i] << ")" << std::endl;
+	}
+	
+	// calculate nearest neighbour
+	vector<int> pointIdxRadiusSearch;
+	vector<float> pointRadiusSquaredDistance;
+	if ( kdtree.radiusSearch (cloud->points[0], 0.01, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0 ){
+		for (size_t i = 0; i < pointIdxRadiusSearch.size (); ++i)
+		  std::cout << "    "  <<   cloud->points[ pointIdxRadiusSearch[i] ].x 
+					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].y 
+					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].z 
+					<< " (squared distance: " << pointRadiusSquaredDistance[i] << ")" << std::endl;
+	}
+
+### Example 04: Normal Estimation  
+	
+	#include <pcl/features/normal_3d_omp.h>
+	pcl::NormalEstimationOMP<PointType, pcl::Normal> ne;	
+	ne.setInputCloud (cloud);
+	pcl::search::KdTree<PointType>::Ptr tree(new pcl::search::KdTree<PointType> ());
+	ne.setSearchMethod (tree);
+	// Output datasets
+	pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
+	// Use all neighbors in a sphere of radius 3cm
+	ne.setRadiusSearch (0.03);
+	// Compute the features
+	ne.compute (*cloud_normals);
+
+
 # 2. User Manual  
 ## Read  
 ### PLY Format 
