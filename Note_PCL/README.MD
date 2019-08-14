@@ -86,8 +86,11 @@ int main(int argc, char** argv)
 ### Example 03: Search K-nearest or nearest neighbour
 	int K=10;
 	vector<int> pointIdxNKNSearch(K);
-	vector<float> pointNKNSquaredDistance(K); 
-	
+	vector<float> pointNKNSquaredDistance(K); 	
+	pcl::NormalEstimationOMP<PointType, pcl::Normal> ne;
+	ne.setSearchMethod (tree);
+	pcl::search::KdTree<PointType>::Ptr tree (new pcl::search::KdTree<PointType>());
+
 	if ( kdtree.nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 ){
 		for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
 		  std::cout << "    "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
