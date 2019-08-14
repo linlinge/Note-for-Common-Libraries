@@ -90,7 +90,7 @@ int main(int argc, char** argv)
 
 	pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
 
-	if ( kdtree.nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 ){
+	if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 ){
 		for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
 		  std::cout << " "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
 					<< " " << cloud->points[ pointIdxNKNSearch[i] ].y 
@@ -101,7 +101,7 @@ int main(int argc, char** argv)
 	// calculate nearest neighbour
 	vector<int> pointIdxRadiusSearch;
 	vector<float> pointRadiusSquaredDistance;
-	if ( kdtree.radiusSearch (cloud->points[0], 0.01, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0 ){
+	if ( kdtree->radiusSearch (cloud->points[0], 0.01, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0 ){
 		for (size_t i = 0; i < pointIdxRadiusSearch.size (); ++i)
 		  std::cout << " "  <<   cloud->points[ pointIdxRadiusSearch[i] ].x 
 					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].y 
