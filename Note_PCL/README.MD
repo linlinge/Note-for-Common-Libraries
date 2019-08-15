@@ -20,7 +20,8 @@ add_executable (cloud_viewer main.cpp)
 target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
 ```
 
-### Example 01: PCLVisualizer
+### Examples   
+**PCLVisualizer**
 ```
 #include <iostream>
 #include <pcl/point_types.h>
@@ -57,7 +58,7 @@ int main(int argc, char** argv)
 }
 ```
 
-### Example 02: PointCloud
+**CloudViewer**
 ```
 #include <iostream>
 #include <pcl/io/pcd_io.h>
@@ -75,7 +76,6 @@ int main(int argc, char** argv)
         system("PAUSE");
         return (-1);
     }
-    //pcl::StatisticalOutlierRemoval::applyFileter()
     pcl::visualization::CloudViewer viewer("Viewer");
     viewer.showCloud(cloud);
 
@@ -132,9 +132,7 @@ int main(int argc, char** argv)
 	ne.compute (*cloud_normals);
 
 
-# 2. User Manual  
-## Read  
-### PLY Format 
+### Example 05: Read PLY Format 
 ```
 typedef pcl::PointXYZRGBA PointType;
 pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
@@ -147,7 +145,7 @@ pcl::io::savePLYFileASCII("1.ply",*cloud);
 ```
 
 
-### PCD Format    
+### Read PCD Format    
 ```
 typedef  pcl::PointXYZRGBA PointType;
 #include <pcl/io/pcd_io.h> 
@@ -162,8 +160,7 @@ writer.write<PointType> ("table_scene_lms400_inliers.pcd", *cloud_filtered, fals
 ```
 
 
-## Display  
-### Single Color
+### Display with Single Color
 ```
 // Define Viewer
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
@@ -185,7 +182,7 @@ viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
     boost::this_thread::sleep (boost::posix_time::microseconds (100000));
  }
 ```
-### Multi-color  
+### Display with Multi-color  
 ```
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
@@ -210,3 +207,6 @@ pcl::visualization::PCLVisualizer viewer;
 viewer.addCoordinateSystem(1.0f);
 viewer.setBackgroundColor(1.0, 1.0, 1.0);  //set background color
 ```
+
+### Set Point Size
+	viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
