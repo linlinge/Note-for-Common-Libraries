@@ -4,7 +4,10 @@
 
 **CMakeLists.txt**  
  
+	cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+	project(eigen_example)
 	include_directories("/usr/include/eigen3")
+	add_executable (eigen_example main.cpp)
 
 ## Example  
 	# include <iostream>
