@@ -9,7 +9,7 @@
 	include_directories("/usr/include/eigen3")
 	add_executable (eigen_example main.cpp)
 
-## Example  
+## Simple Example  
 	# include <iostream>
 	# include <Eigen/Dense>
 	using Eigen::MatrixXd;
@@ -22,3 +22,16 @@
 		m(1,1) = m(1,0) + m(0,1);
 		std::cout << m << std::endl;
 	}
+
+## Operation  
+**Header**
+	#include <Eigen/Dense>
+
+**Invert**
+	
+	A.inverse();
+
+**Transpose**
+
+	A.transpose();
+
