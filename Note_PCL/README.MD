@@ -60,7 +60,7 @@ int main(int argc, char** argv)
     viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud"); 						//添加需要显示的点云数据    
     while(!viewer->wasStopped()){
         viewer->spinOnce (100);
-        boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+        boost::this_thread::sleep (boost::posix_time::microseconds (10));
     }
 
   	return (0);
