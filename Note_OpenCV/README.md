@@ -67,7 +67,7 @@ Mat M;
 M.create(100,60,CV_8UC(15));
 ```
 
-### regi
+### Rodrigues (Convert rotation vector to rotation matrix)
 
 	#include <iostream>
 	#include <opencv2/opencv.hpp>
