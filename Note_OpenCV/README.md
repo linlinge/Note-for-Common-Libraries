@@ -75,9 +75,9 @@ M.create(100,60,CV_8UC(15));
 	using namespace cv;
 	int main()
 	{	
-		Mat rotation_vector = (Mat_<double>(3, 1) << 0, 0 , CV_PI/2); 	// rotation vector
-		Mat rotation_matrix;											// rotaiton matrix
-		Rodrigues(rotation_vector, rotation_matrix);								// calculate 
+		Mat rotation_vector = (Mat_<double>(3, 1) << 0, 0 , CV_PI/2);   // rotation vector
+		Mat rotation_matrix;										    // rotaiton matrix
+		Rodrigues(rotation_vector, rotation_matrix);				    // calculate 
 		
 		Mat initial_vector = (Mat_<double>(3, 1) << 5.13506, 4.70901, 0);
 		Mat des_vector = rotation_matrix * initial_vector;
