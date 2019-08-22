@@ -21,6 +21,18 @@ target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
 ```
 
 ### Examples   
+
+	#include <iostream>	
+	#include <pcl/point_types.h>
+	#include <pcl/io/pcd_io.h>
+	#include <pcl/io/ply_io.h>
+	#include <pcl/visualization/cloud_viewer.h>
+	#include <pcl/visualization/pcl_visualizer.h>
+	#include <pcl/kdtree/kdtree_flann.h>
+	#include <pcl/features/normal_3d.h>
+	#include <pcl/surface/gp3.h>	
+	typedef PointTypeRGBA PointType;
+
 **PCLVisualizer**
 ```
 #include <iostream>
@@ -33,9 +45,9 @@ target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
 #include <pcl/visualization/pcl_visualizer.h>
 int main(int argc, char** argv)
 {
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
 
-    if (pcl::io::loadPLYFile<pcl::PointXYZ>("/home/linlinge/Desktop/1.ply", *cloud) == -1) //* load the file
+    if (pcl::io::loadPLYFile<PointType>("/home/linlinge/Desktop/1.ply", *cloud) == -1) //* load the file
     {
         PCL_ERROR("Couldn't read file test_pcd.pcd \n");
         return (-1);
@@ -43,10 +55,10 @@ int main(int argc, char** argv)
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
      viewer->setBackgroundColor (0.33, 0.97, 0.59);
      //设置点云颜色，该处为单一颜色设置
-     pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> single_color(cloud, 255, 255, 255);
+     pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255);
 
      //添加需要显示的点云数据
-     viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
+     viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
 
 
     //viewer->showCloud(cloud);
@@ -68,9 +80,9 @@ int main(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
 
-    if (pcl::io::loadPLYFile<pcl::PointXYZ>("/home/linlinge/Desktop/bunny.ply", *cloud) == -1) //* load the file
+    if (pcl::io::loadPLYFile<PointType>("/home/linlinge/Desktop/bunny.ply", *cloud) == -1) //* load the file
     {
         PCL_ERROR("Couldn't read file test_pcd.pcd \n");
         system("PAUSE");
@@ -134,7 +146,7 @@ int main(int argc, char** argv)
 
 ### Example 05: Read PLY Format 
 ```
-typedef pcl::PointXYZRGBA PointType;
+typedef PointTypeRGBA PointType;
 pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
 if (pcl::io::loadPLYFile<PointType>("/home/linlinge/Desktop/1.ply", *cloud) == -1) 
 {
@@ -147,7 +159,7 @@ pcl::io::savePLYFileASCII("1.ply",*cloud);
 
 ### Read PCD Format    
 ```
-typedef  pcl::PointXYZRGBA PointType;
+typedef  PointTypeRGBA PointType;
 #include <pcl/io/pcd_io.h> 
 
 // read PCD
@@ -169,10 +181,10 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualizat
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
 
 //Set Point Cloud Color
-pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> single_color(cloud, 255, 255, 255);
+pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255);
 
 // Add Point Cloud to Viewer
-viewer->addPointCloud<pcl::PointXYZ> (cloud, single_color, "sample cloud");
+viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
 
 // Show Point Cloud
  while(!viewer->wasStopped())
@@ -188,10 +200,10 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualizat
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
 
 //set multi-color for point cloud
-pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> multi_color(cloud);
+pcl::visualization::PointCloudColorHandlerRGBField<PointTypeRGB> multi_color(cloud);
 
 //add the demostration point cloud data
-viewer->addPointCloud<pcl::PointXYZRGB> (cloud, multi_color, "sample cloud");
+viewer->addPointCloud<PointTypeRGB> (cloud, multi_color, "sample cloud");
 
 while(!viewer->wasStopped())
 {
