@@ -198,25 +198,17 @@ viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
 ```
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
-
-//set multi-color for point cloud
-pcl::visualization::PointCloudColorHandlerRGBField<PointTypeRGB> multi_color(cloud);
-
-//add the demostration point cloud data
-viewer->addPointCloud<PointTypeRGB> (cloud, multi_color, "sample cloud");
-
-while(!viewer->wasStopped())
-{
-	//viewer->spinOnce (100);
+pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	//set multi-color for point cloud
+viewer->addPointCloud<PointType> (cloud, multi_color, "sample cloud");  			//add the demostration point cloud data
+while(!viewer->wasStopped()){	
 	viewer->spin();
-	boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+	boost::this_thread::sleep (boost::posix_time::microseconds (10));
 }
-```
+```  
 ### Show Coordinate  
 ```
 pcl::visualization::PCLVisualizer viewer;
-// make sure addCoordinateSystem is before setBackgroundColor
-viewer.addCoordinateSystem(1.0f);
+viewer.addCoordinateSystem(1.0f); // make sure addCoordinateSystem is before setBackgroundColor
 viewer.setBackgroundColor(1.0, 1.0, 1.0);  //set background color
 ```
 
