@@ -52,21 +52,18 @@ int main(int argc, char** argv)
         PCL_ERROR("Couldn't read file test_pcd.pcd \n");
         return (-1);
     }
+
+	// Display
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
-     viewer->setBackgroundColor (0.33, 0.97, 0.59);
-     //设置点云颜色，该处为单一颜色设置
-     pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255);
-
-     //添加需要显示的点云数据
-     viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
-
-
-    //viewer->showCloud(cloud);
+    viewer->setBackgroundColor (0.33, 0.97, 0.59);     
+    pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255); //设置点云颜色，该处为单一颜色设置     
+    viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud"); 						//添加需要显示的点云数据    
     while(!viewer->wasStopped()){
         viewer->spinOnce (100);
         boost::this_thread::sleep (boost::posix_time::microseconds (100000));
     }
-  return (0);
+
+  	return (0);
 }
 ```
 
@@ -88,10 +85,14 @@ int main(int argc, char** argv)
         system("PAUSE");
         return (-1);
     }
+
+	// display
     pcl::visualization::CloudViewer viewer("Viewer");
     viewer.showCloud(cloud);
-
     while(!viewer.wasStopped());
+
+
+
     return (0);
 }
 ``` 
