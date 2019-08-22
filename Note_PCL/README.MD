@@ -53,7 +53,7 @@ int main(int argc, char** argv)
         return (-1);
     }
 
-	// Display
+    // Display
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
     viewer->setBackgroundColor (0.33, 0.97, 0.59);     
     pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255); //设置点云颜色，该处为单一颜色设置     
@@ -86,7 +86,7 @@ int main(int argc, char** argv)
         return (-1);
     }
 
-	// display
+    // display
     pcl::visualization::CloudViewer viewer("Viewer");
     viewer.showCloud(cloud);
     while(!viewer.wasStopped());
