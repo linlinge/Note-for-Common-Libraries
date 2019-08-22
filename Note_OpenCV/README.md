@@ -52,9 +52,6 @@ int main()
 }
 ```
 
-## Example (Python)  
-
-
 ## Common Usage  
 ### Create Mat  
 ```
