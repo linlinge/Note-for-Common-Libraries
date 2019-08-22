@@ -62,8 +62,7 @@ int main(int argc, char** argv)
         viewer->spinOnce (100);
         boost::this_thread::sleep (boost::posix_time::microseconds (10));
     }
-
-  	return (0);
+    return (0);
 }
 ```
 
