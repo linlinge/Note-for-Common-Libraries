@@ -174,17 +174,10 @@ writer.write<PointType> ("table_scene_lms400_inliers.pcd", *cloud_filtered, fals
 
 ### Display with Single Color
 ```
-// Define Viewer
-boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
-
-// Define Background
-viewer->setBackgroundColor (0.33, 0.97, 0.59);
-
-//Set Point Cloud Color
-pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255);
-
-// Add Point Cloud to Viewer
-viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer")); // Define Viewer
+viewer->setBackgroundColor (0.33, 0.97, 0.59); // Define Background
+pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255); //Set Point Cloud Color
+viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud"); // Add Point Cloud to Viewer
 
 // Show Point Cloud
  while(!viewer->wasStopped())
