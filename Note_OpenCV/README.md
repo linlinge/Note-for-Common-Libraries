@@ -45,7 +45,7 @@ int main()
 		CV_64FC1 64位1通道
 	*/
 
-	Mat img(5, 5, CV_8UC3, Scalar(128,0,0));	
+	Mat img(800, 600, CV_8UC3, Scalar(128,0,0));	
 	imshow("Image Viewer",img);
 	waitKey(0);
 	return 0;
