@@ -80,6 +80,9 @@ pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 
 // set point size
 viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
 
+// add arrow
+viewer.addArrow<pcl::PointXYZ>(pcl::PointXYZ(0,0,0), pcl::PointXYZ(0,0,1), 255, 0, 0, false, "arrow", 0);
+
 //添加需要显示的点云数据     
 viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");    
 while(!viewer->wasStopped()){
