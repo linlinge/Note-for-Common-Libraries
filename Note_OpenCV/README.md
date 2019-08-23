@@ -68,7 +68,7 @@ M.create(100,60,CV_8UC(15));
 
 
 ### Rodrigues (Convert rotation vector to rotation matrix)
-
+```c++
 	#include <iostream>
 	#include <opencv2/opencv.hpp>
 	using namespace std;
@@ -84,3 +84,4 @@ M.create(100,60,CV_8UC(15));
 		cout << des_vector << endl;
 		return 0;
 	}
+```
