@@ -1,7 +1,7 @@
 #  Ubuntu 18.04  
 ## Installation  
 Download package from the following website: https://opencv.org/releases/  
-```
+```bash
 # mkdir build
 # cd build
 # cmake ..
@@ -11,7 +11,7 @@ Download package from the following website: https://opencv.org/releases/
 
 ## Example (CMake)
 CMakeLists.txt
-```
+```c++
 # cmake needs this line
 cmake_minimum_required(VERSION 3.1)
 
@@ -30,7 +30,7 @@ target_link_libraries(opencv_example ${OpenCV_LIBS})
 ```
 
 main.cpp  
-```
+```c++
 #include <iostream>
 #include <opencv2/opencv.hpp>
 using namespace std;
@@ -54,7 +54,7 @@ int main()
 
 ## Common Usage  
 ### <font color=red> Create Mat  </font>
-```
+```c++
 // Method1: Init and create at the same time
 Mat M(7,7,CV_32FC2,Scalar(1,3));
 Mat img(5, 5, CV_8UC3, Scalar(128,0,0));
