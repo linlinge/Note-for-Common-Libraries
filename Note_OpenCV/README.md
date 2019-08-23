@@ -53,7 +53,7 @@ int main()
 ```
 
 ## Common Usage  
-### <font color=red> Create Mat  </font>
+### Create Mat
 ```c++
 // Method1: Init and create at the same time
 Mat M(7,7,CV_32FC2,Scalar(1,3));
@@ -63,8 +63,6 @@ Mat img(5, 5, CV_8UC3, Scalar(128,0,0));
 Mat M;
 M.create(100,60,CV_8UC(15));
 ```
-
-<font color=red>我是红色</font>
 
 
 ### Rodrigues (Convert rotation vector to rotation matrix)
@@ -84,4 +82,10 @@ int main()
 	cout << des_vector << endl;
 	return 0;
 }
+```
+
+### Access Mat
+```c++
+Mat dat= (Mat_<double>(3, 1) << 1,2,3);
+cout<<dat.ptr  <double>(0)[0],dat.ptr<double>(1)[0],dat.ptr<double>(2)[0]
 ```
