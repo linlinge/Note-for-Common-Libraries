@@ -42,7 +42,9 @@ int main()
 		PCL_ERROR("Couldn't read file test_pcd.pcd \n");
 		return (-1);
 	}
-	boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
+
+	boost::shared_ptr<pcl::visualization::PCLVisualizer> 
+		viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
 	viewer->setBackgroundColor (0.33, 0.97, 0.59);
 	//set multi-color for point cloud
 	pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	
@@ -63,7 +65,8 @@ int main()
 #include <pcl/visualization/pcl_visualizer.h>
 
 // Display
-boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
+boost::shared_ptr<pcl::visualization::PCLVisualizer> 
+	viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
 
 //set background color
 viewer->setBackgroundColor (0.33, 0.97, 0.59); 
@@ -128,7 +131,9 @@ writer.write<PointType> ("table_scene_lms400_inliers.pcd", *cloud_filtered, fals
 ### [*Color*]()
 **Multi-color**  
 ```c++
-boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
+boost::shared_ptr<pcl::visualization::PCLVisualizer> 
+	viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
+
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
 //set multi-color for point cloud
 pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	
@@ -142,7 +147,9 @@ while(!viewer->wasStopped()){
 **single color**
 ```c++
 // Define Viewer
-boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
+boost::shared_ptr<pcl::visualization::PCLVisualizer> 
+	viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
+
 // Define Background 
 viewer->setBackgroundColor (0.33, 0.97, 0.59); 
 //Set Point Cloud Color
