@@ -34,6 +34,25 @@ target_link_libraries (pcl_demo ${PCL_LIBRARIES})
 #include <pcl/features/normal_3d.h>
 #include <pcl/surface/gp3.h>	
 typedef PointTypeRGBA PointType;
+int main()
+{
+	pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
+	if (pcl::io::loadPLYFile<PointType>("/home/linlinge/Desktop/1.ply", *cloud) == -1) 
+	{
+		PCL_ERROR("Couldn't read file test_pcd.pcd \n");
+		return (-1);
+	}
+	boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
+	viewer->setBackgroundColor (0.33, 0.97, 0.59);
+	//set multi-color for point cloud
+	pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	
+	//add the demostration point cloud data
+	viewer->addPointCloud<PointType> (cloud, multi_color, "sample cloud");  			
+	while(!viewer->wasStopped()){	
+		viewer->spin();
+		boost::this_thread::sleep (boost::posix_time::microseconds (10));
+	}
+}
 
 ```
 
@@ -44,7 +63,7 @@ typedef PointTypeRGBA PointType;
 #include <pcl/visualization/pcl_visualizer.h>
 
 // Display
-boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
 
 //set background color
 viewer->setBackgroundColor (0.33, 0.97, 0.59); 
@@ -109,7 +128,7 @@ writer.write<PointType> ("table_scene_lms400_inliers.pcd", *cloud_filtered, fals
 ### [*Color*]()
 **Multi-color**  
 ```c++
-boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
 //set multi-color for point cloud
 pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	
@@ -123,7 +142,7 @@ while(!viewer->wasStopped()){
 **single color**
 ```c++
 // Define Viewer
-boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
 // Define Background 
 viewer->setBackgroundColor (0.33, 0.97, 0.59); 
 //Set Point Cloud Color
