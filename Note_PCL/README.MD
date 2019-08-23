@@ -1,6 +1,6 @@
 # 1. PCL Installation and Configuration
 ## STEP 1: ubuntu & qt & cmake
-```
+```bash
 # sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
 # sudo apt-get update
 // old version ubuntu
@@ -9,7 +9,7 @@
 # sudo apt-get install libpcl-dev
 ```
 ## STEP 2: CMakeLists.txt
-```
+```c++
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(cloud_viewer)
 find_package(PCL 1.2 REQUIRED)
@@ -34,7 +34,7 @@ target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
 	typedef PointTypeRGBA PointType;
 
 **PCLVisualizer**
-```
+```c++
 #include <iostream>
 #include <pcl/point_types.h>
 #include <pcl/io/ply_io.h>
@@ -67,7 +67,7 @@ int main(int argc, char** argv)
 ```
 
 **CloudViewer**
-```
+```c++
 #include <iostream>
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
@@ -95,27 +95,27 @@ int main(int argc, char** argv)
     return (0);
 }
 ``` 
-### Example 03: Search K-nearest or nearest neighbour
+[*Example 03: Search K-nearest or nearest neighbour*]()
 	
 **K-nearest**
+```c++
+int K=10;
+vector<int> pointIdxNKNSearch(K);
+vector<float> pointNKNSquaredDistance(K); 	
+pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
+kdtree->setInputCloud(cloud);
 
-	int K=10;
-	vector<int> pointIdxNKNSearch(K);
-	vector<float> pointNKNSquaredDistance(K); 	
-	pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
-	kdtree->setInputCloud(cloud);
-
-	if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 ){
-		for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
-		  std::cout << " "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
-					<< " " << cloud->points[ pointIdxNKNSearch[i] ].y 
-					<< " " << cloud->points[ pointIdxNKNSearch[i] ].z 
-					<< " (squared distance: " << pointNKNSquaredDistance[i] << ")" << std::endl;
-	}
-	
+if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 ){
+	for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
+	  std::cout << " "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
+				<< " " << cloud->points[ pointIdxNKNSearch[i] ].y 
+				<< " " << cloud->points[ pointIdxNKNSearch[i] ].z 
+				<< " (squared distance: " << pointNKNSquaredDistance[i] << ")" << std::endl;
+}
+```
 
 **Radius**
-
+```c++
 	pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
 	vector<int> pointIdxRadiusSearch;
 	vector<float> pointRadiusSquaredDistance;
@@ -128,9 +128,10 @@ int main(int argc, char** argv)
 					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].z 
 					<< " (squared distance: " << pointRadiusSquaredDistance[i] << ")" << std::endl;
 	}
+```
 
-### Example 04: Normal Estimation  
-	
+[*Example 04: Normal Estimation*]()  
+```c++
 	#include <pcl/features/normal_3d_omp.h>
 	pcl::NormalEstimationOMP<PointType, pcl::Normal> ne;	
 	ne.setInputCloud (cloud);
@@ -142,10 +143,10 @@ int main(int argc, char** argv)
 	ne.setRadiusSearch (0.03);
 	// Compute the features
 	ne.compute (*cloud_normals);
-
-
-### Example 05: Read PLY Format 
 ```
+
+[*Example 05: Read PLY Format*]() 
+```c++
 typedef PointTypeRGBA PointType;
 pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
 if (pcl::io::loadPLYFile<PointType>("/home/linlinge/Desktop/1.ply", *cloud) == -1) 
@@ -157,8 +158,8 @@ pcl::io::savePLYFileASCII("1.ply",*cloud);
 ```
 
 
-### Read PCD Format    
-```
+[*Read PCD Format*]()    
+```c++
 typedef  PointTypeRGBA PointType;
 #include <pcl/io/pcd_io.h> 
 
@@ -172,8 +173,8 @@ writer.write<PointType> ("table_scene_lms400_inliers.pcd", *cloud_filtered, fals
 ```
 
 
-### Display with Single Color
-```
+[*Display with Single Color*]()
+```c++
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer")); // Define Viewer
 viewer->setBackgroundColor (0.33, 0.97, 0.59); // Define Background
 pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255); //Set Point Cloud Color
@@ -187,8 +188,9 @@ viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud"); // Add P
     boost::this_thread::sleep (boost::posix_time::microseconds (100000));
  }
 ```
-### Display with Multi-color  
-```
+
+[*Display with Multi-color*]()  
+```c++
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
 pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	//set multi-color for point cloud
@@ -197,13 +199,16 @@ while(!viewer->wasStopped()){
 	viewer->spin();
 	boost::this_thread::sleep (boost::posix_time::microseconds (10));
 }
-```  
-### Show Coordinate  
 ```
+  
+[*Show Coordinate*]()  
+```c++
 pcl::visualization::PCLVisualizer viewer;
 viewer.addCoordinateSystem(1.0f); // make sure addCoordinateSystem is before setBackgroundColor
 viewer.setBackgroundColor(1.0, 1.0, 1.0);  //set background color
 ```
 
-### Set Point Size
-	viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
+[*Set Point Size*]()
+```c++
+viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
+```
