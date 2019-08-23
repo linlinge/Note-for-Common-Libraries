@@ -186,18 +186,18 @@ if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSqu
 
 **Radius**
 ```c++
-	pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
-	vector<int> pointIdxRadiusSearch;
-	vector<float> pointRadiusSquaredDistance;
-	kdtree->setInputCloud(cloud);
+pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
+vector<int> pointIdxRadiusSearch;
+vector<float> pointRadiusSquaredDistance;
+kdtree->setInputCloud(cloud);
 
-	if ( kdtree->radiusSearch (cloud->points[0], 0.01, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0 ){
-		for (size_t i = 0; i < pointIdxRadiusSearch.size (); ++i)
-		  std::cout << " "  <<   cloud->points[ pointIdxRadiusSearch[i] ].x 
-					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].y 
-					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].z 
-					<< " (squared distance: " << pointRadiusSquaredDistance[i] << ")" << std::endl;
-	}
+if ( kdtree->radiusSearch (cloud->points[0], 0.01, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0 ){
+	for (size_t i = 0; i < pointIdxRadiusSearch.size (); ++i)
+	  std::cout << " "  <<   cloud->points[ pointIdxRadiusSearch[i] ].x 
+				<< " " << cloud->points[ pointIdxRadiusSearch[i] ].y 
+				<< " " << cloud->points[ pointIdxRadiusSearch[i] ].z 
+				<< " (squared distance: " << pointRadiusSquaredDistance[i] << ")" << std::endl;
+}
 ```
 
 ### [*Normal Estimation*]()  
