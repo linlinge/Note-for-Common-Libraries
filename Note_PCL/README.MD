@@ -84,7 +84,7 @@ if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSqu
 }
 ```
 
-*Radius*
+**Radius**
 ```c++
 	pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
 	vector<int> pointIdxRadiusSearch;
@@ -116,7 +116,7 @@ if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSqu
 ```
 
 ### [*Read and write*]()  
-*ply* 
+**ply**
 ```c++
 typedef PointTypeRGBA PointType;
 pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
@@ -129,7 +129,7 @@ pcl::io::savePLYFileASCII("1.ply",*cloud);
 ```
 
 
-*PCD*    
+**PCD**
 ```c++
 typedef  PointTypeRGBA PointType;
 #include <pcl/io/pcd_io.h> 
@@ -144,7 +144,21 @@ writer.write<PointType> ("table_scene_lms400_inliers.pcd", *cloud_filtered, fals
 ```
 
 
-[*Display with Single Color*]()
+### [*Color*]()
+**Multi-color**  
+```c++
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+viewer->setBackgroundColor (0.33, 0.97, 0.59);
+//set multi-color for point cloud
+pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	
+//add the demostration point cloud data
+viewer->addPointCloud<PointType> (cloud, multi_color, "sample cloud");  			
+while(!viewer->wasStopped()){	
+	viewer->spin();
+	boost::this_thread::sleep (boost::posix_time::microseconds (10));
+}
+```
+**single color**
 ```c++
 // Define Viewer
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
@@ -163,21 +177,9 @@ viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
  }
 ```
 
-[*Display with Multi-color*]()  
-```c++
-boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
-viewer->setBackgroundColor (0.33, 0.97, 0.59);
-//set multi-color for point cloud
-pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	
-//add the demostration point cloud data
-viewer->addPointCloud<PointType> (cloud, multi_color, "sample cloud");  			
-while(!viewer->wasStopped()){	
-	viewer->spin();
-	boost::this_thread::sleep (boost::posix_time::microseconds (10));
-}
-```
+
   
-[*Show Coordinate*]()  
+### [*Coordinate*]()  
 ```c++
 pcl::visualization::PCLVisualizer viewer;
 // make sure addCoordinateSystem is before setBackgroundColor
@@ -186,7 +188,7 @@ viewer.addCoordinateSystem(1.0f);
 viewer.setBackgroundColor(1.0, 1.0, 1.0);  
 ```
 
-[*Set Point Size*]()
+### [*Point Size*]()
 ```c++
 viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
 ```
