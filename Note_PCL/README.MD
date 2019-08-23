@@ -45,9 +45,19 @@ typedef PointTypeRGBA PointType;
 
 // Display
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
-viewer->setBackgroundColor (0.33, 0.97, 0.59);     
+
+//set background color
+viewer->setBackgroundColor (0.33, 0.97, 0.59); 
+
+// make sure addCoordinateSystem is before setBackgroundColor
+viewer.addCoordinateSystem(1.0f); 
+   
 //设置点云颜色，该处为单一颜色设置
 pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255);
+
+// set point size
+viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
+
 //添加需要显示的点云数据     
 viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");    
 while(!viewer->wasStopped()){
@@ -65,55 +75,7 @@ pcl::visualization::CloudViewer viewer("Viewer");
 viewer.showCloud(cloud);
 while(!viewer.wasStopped());
 ``` 
-### [*Nearest Neighbour*]()
-	
-**K-nearest**
-```c++
-int K=10;
-vector<int> pointIdxNKNSearch(K);
-vector<float> pointNKNSquaredDistance(K); 	
-pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
-kdtree->setInputCloud(cloud);
 
-if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 ){
-	for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
-	  std::cout << " "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
-				<< " " << cloud->points[ pointIdxNKNSearch[i] ].y 
-				<< " " << cloud->points[ pointIdxNKNSearch[i] ].z 
-				<< " (squared distance: " << pointNKNSquaredDistance[i] << ")" << std::endl;
-}
-```
-
-**Radius**
-```c++
-	pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
-	vector<int> pointIdxRadiusSearch;
-	vector<float> pointRadiusSquaredDistance;
-	kdtree->setInputCloud(cloud);
-
-	if ( kdtree->radiusSearch (cloud->points[0], 0.01, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0 ){
-		for (size_t i = 0; i < pointIdxRadiusSearch.size (); ++i)
-		  std::cout << " "  <<   cloud->points[ pointIdxRadiusSearch[i] ].x 
-					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].y 
-					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].z 
-					<< " (squared distance: " << pointRadiusSquaredDistance[i] << ")" << std::endl;
-	}
-```
-
-### [*Normal Estimation*]()  
-```c++
-	#include <pcl/features/normal_3d_omp.h>
-	pcl::NormalEstimationOMP<PointType, pcl::Normal> ne;	
-	ne.setInputCloud (cloud);
-	pcl::search::KdTree<PointType>::Ptr tree(new pcl::search::KdTree<PointType> ());
-	ne.setSearchMethod (tree);
-	// Output datasets
-	pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
-	// Use all neighbors in a sphere of radius 3cm
-	ne.setRadiusSearch (0.03);
-	// Compute the features
-	ne.compute (*cloud_normals);
-```
 
 ### [*Read and write*]()  
 **ply**
@@ -177,18 +139,52 @@ viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
  }
 ```
 
-
-  
-### [*Coordinate*]()  
+### [*Nearest Neighbour*]()
+	
+**K-nearest**
 ```c++
-pcl::visualization::PCLVisualizer viewer;
-// make sure addCoordinateSystem is before setBackgroundColor
-viewer.addCoordinateSystem(1.0f); 
-//set background color
-viewer.setBackgroundColor(1.0, 1.0, 1.0);  
+int K=10;
+vector<int> pointIdxNKNSearch(K);
+vector<float> pointNKNSquaredDistance(K); 	
+pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
+kdtree->setInputCloud(cloud);
+
+if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 ){
+	for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
+	  std::cout << " "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
+				<< " " << cloud->points[ pointIdxNKNSearch[i] ].y 
+				<< " " << cloud->points[ pointIdxNKNSearch[i] ].z 
+				<< " (squared distance: " << pointNKNSquaredDistance[i] << ")" << std::endl;
+}
 ```
 
-### [*Point Size*]()
+**Radius**
 ```c++
-viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
+	pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
+	vector<int> pointIdxRadiusSearch;
+	vector<float> pointRadiusSquaredDistance;
+	kdtree->setInputCloud(cloud);
+
+	if ( kdtree->radiusSearch (cloud->points[0], 0.01, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0 ){
+		for (size_t i = 0; i < pointIdxRadiusSearch.size (); ++i)
+		  std::cout << " "  <<   cloud->points[ pointIdxRadiusSearch[i] ].x 
+					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].y 
+					<< " " << cloud->points[ pointIdxRadiusSearch[i] ].z 
+					<< " (squared distance: " << pointRadiusSquaredDistance[i] << ")" << std::endl;
+	}
+```
+
+### [*Normal Estimation*]()  
+```c++
+#include <pcl/features/normal_3d_omp.h>
+pcl::NormalEstimationOMP<PointType, pcl::Normal> ne;	
+ne.setInputCloud (cloud);
+pcl::search::KdTree<PointType>::Ptr tree(new pcl::search::KdTree<PointType> ());
+ne.setSearchMethod (tree);
+// Output datasets
+pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
+// Use all neighbors in a sphere of radius 3cm
+ne.setRadiusSearch (0.03);
+// Compute the features
+ne.compute (*cloud_normals);
 ```
