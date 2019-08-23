@@ -8,7 +8,10 @@
 // ubuntu 18.04 
 # sudo apt-get install libpcl-dev
 ```
-## STEP 2: CMakeLists.txt
+
+
+## Example  
+ [*CMakeLists.txt*]()
 ```c++
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(pcl_demo)
@@ -18,9 +21,8 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 add_executable (pcl_demo main.cpp)
 target_link_libraries (pcl_demo ${PCL_LIBRARIES})
-```
-
-### Examples   
+``` 
+[*main.cpp*]()
 ```bash
 #include <iostream>	
 #include <pcl/point_types.h>
@@ -32,71 +34,38 @@ target_link_libraries (pcl_demo ${PCL_LIBRARIES})
 #include <pcl/features/normal_3d.h>
 #include <pcl/surface/gp3.h>	
 typedef PointTypeRGBA PointType;
+
 ```
 
+## Common Usages
+### [*Display*]()   
 **PCLVisualizer**
 ```c++
-#include <iostream>
-#include <pcl/point_types.h>
-#include <pcl/io/ply_io.h>
-#include <pcl/visualization/cloud_viewer.h>
-#include <pcl/kdtree/kdtree_flann.h>
-#include <pcl/features/normal_3d.h>
-#include <pcl/surface/gp3.h>
 #include <pcl/visualization/pcl_visualizer.h>
-int main(int argc, char** argv)
-{
-    pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
 
-    if (pcl::io::loadPLYFile<PointType>("/home/linlinge/Desktop/1.ply", *cloud) == -1) //* load the file
-    {
-        PCL_ERROR("Couldn't read file test_pcd.pcd \n");
-        return (-1);
-    }
-
-    // Display
-    boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
-    viewer->setBackgroundColor (0.33, 0.97, 0.59);     
-    pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255); //设置点云颜色，该处为单一颜色设置     
-    viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud"); 						//添加需要显示的点云数据    
-    while(!viewer->wasStopped()){
-        viewer->spinOnce (100);
-        boost::this_thread::sleep (boost::posix_time::microseconds (10));
-    }
-    return (0);
+// Display
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+viewer->setBackgroundColor (0.33, 0.97, 0.59);     
+//设置点云颜色，该处为单一颜色设置
+pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255);
+//添加需要显示的点云数据     
+viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");    
+while(!viewer->wasStopped()){
+    viewer->spinOnce (100);
+    boost::this_thread::sleep (boost::posix_time::microseconds (10));
 }
 ```
 
 **CloudViewer**
 ```c++
-#include <iostream>
-#include <pcl/io/pcd_io.h>
-#include <pcl/point_types.h>
-#include <pcl/io/ply_io.h>
 #include <pcl/visualization/cloud_viewer.h>
 
-int main(int argc, char** argv)
-{
-    pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
-
-    if (pcl::io::loadPLYFile<PointType>("/home/linlinge/Desktop/bunny.ply", *cloud) == -1) //* load the file
-    {
-        PCL_ERROR("Couldn't read file test_pcd.pcd \n");
-        system("PAUSE");
-        return (-1);
-    }
-
-    // display
-    pcl::visualization::CloudViewer viewer("Viewer");
-    viewer.showCloud(cloud);
-    while(!viewer.wasStopped());
-
-
-
-    return (0);
-}
+// display
+pcl::visualization::CloudViewer viewer("Viewer");
+viewer.showCloud(cloud);
+while(!viewer.wasStopped());
 ``` 
-[*Example 03: Search K-nearest or nearest neighbour*]()
+### [*Nearest Neighbour*]()
 	
 **K-nearest**
 ```c++
@@ -115,7 +84,7 @@ if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSqu
 }
 ```
 
-**Radius**
+*Radius*
 ```c++
 	pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
 	vector<int> pointIdxRadiusSearch;
@@ -131,7 +100,7 @@ if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSqu
 	}
 ```
 
-[*Example 04: Normal Estimation*]()  
+### [*Normal Estimation*]()  
 ```c++
 	#include <pcl/features/normal_3d_omp.h>
 	pcl::NormalEstimationOMP<PointType, pcl::Normal> ne;	
@@ -146,7 +115,8 @@ if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSqu
 	ne.compute (*cloud_normals);
 ```
 
-[*Example 05: Read PLY Format*]() 
+### [*Read and write*]()  
+*ply* 
 ```c++
 typedef PointTypeRGBA PointType;
 pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
@@ -159,7 +129,7 @@ pcl::io::savePLYFileASCII("1.ply",*cloud);
 ```
 
 
-[*Read PCD Format*]()    
+*PCD*    
 ```c++
 typedef  PointTypeRGBA PointType;
 #include <pcl/io/pcd_io.h> 
@@ -176,17 +146,20 @@ writer.write<PointType> ("table_scene_lms400_inliers.pcd", *cloud_filtered, fals
 
 [*Display with Single Color*]()
 ```c++
-boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer")); // Define Viewer
-viewer->setBackgroundColor (0.33, 0.97, 0.59); // Define Background
-pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255); //Set Point Cloud Color
-viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud"); // Add Point Cloud to Viewer
-
+// Define Viewer
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+// Define Background 
+viewer->setBackgroundColor (0.33, 0.97, 0.59); 
+//Set Point Cloud Color
+pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255);
+// Add Point Cloud to Viewer 
+viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud"); 
 // Show Point Cloud
  while(!viewer->wasStopped())
 {
     //viewer->spinOnce (100);
     viewer->spin();
-    boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+    boost::this_thread::sleep (boost::posix_time::microseconds (10));
  }
 ```
 
@@ -194,8 +167,10 @@ viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud"); // Add P
 ```c++
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 viewer->setBackgroundColor (0.33, 0.97, 0.59);
-pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	//set multi-color for point cloud
-viewer->addPointCloud<PointType> (cloud, multi_color, "sample cloud");  			//add the demostration point cloud data
+//set multi-color for point cloud
+pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	
+//add the demostration point cloud data
+viewer->addPointCloud<PointType> (cloud, multi_color, "sample cloud");  			
 while(!viewer->wasStopped()){	
 	viewer->spin();
 	boost::this_thread::sleep (boost::posix_time::microseconds (10));
@@ -205,8 +180,10 @@ while(!viewer->wasStopped()){
 [*Show Coordinate*]()  
 ```c++
 pcl::visualization::PCLVisualizer viewer;
-viewer.addCoordinateSystem(1.0f); // make sure addCoordinateSystem is before setBackgroundColor
-viewer.setBackgroundColor(1.0, 1.0, 1.0);  //set background color
+// make sure addCoordinateSystem is before setBackgroundColor
+viewer.addCoordinateSystem(1.0f); 
+//set background color
+viewer.setBackgroundColor(1.0, 1.0, 1.0);  
 ```
 
 [*Set Point Size*]()
