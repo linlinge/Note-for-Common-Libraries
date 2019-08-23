@@ -53,7 +53,7 @@ int main()
 ```
 
 ## Common Usage  
-### Create Mat  
+### <font color=red> Create Mat  </font>
 ```
 // Method1: Init and create at the same time
 Mat M(7,7,CV_32FC2,Scalar(1,3));
@@ -63,6 +63,9 @@ Mat img(5, 5, CV_8UC3, Scalar(128,0,0));
 Mat M;
 M.create(100,60,CV_8UC(15));
 ```
+
+<font color=red>我是红色</font>
+
 
 ### Rodrigues (Convert rotation vector to rotation matrix)
 
