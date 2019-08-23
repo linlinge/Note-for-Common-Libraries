@@ -45,11 +45,16 @@ int main()
 
 	boost::shared_ptr<pcl::visualization::PCLVisualizer> 
 		viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
+	
+	// Set background
 	viewer->setBackgroundColor (0.33, 0.97, 0.59);
-	//set multi-color for point cloud
+
+	//Set multi-color for point cloud
 	pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud);  	
-	//add the demostration point cloud data
+
+	//Add the demostration point cloud data
 	viewer->addPointCloud<PointType> (cloud, multi_color, "sample cloud");  			
+
 	while(!viewer->wasStopped()){	
 		viewer->spin();
 		boost::this_thread::sleep (boost::posix_time::microseconds (10));
@@ -68,23 +73,25 @@ int main()
 boost::shared_ptr<pcl::visualization::PCLVisualizer> 
 	viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
 
-//set background color
+// Set background color
 viewer->setBackgroundColor (0.33, 0.97, 0.59); 
 
-// make sure addCoordinateSystem is before setBackgroundColor
+// Make sure addCoordinateSystem is before setBackgroundColor
 viewer.addCoordinateSystem(1.0f); 
    
-//设置点云颜色，该处为单一颜色设置
+// 设置点云颜色，该处为单一颜色设置
 pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255);
 
-// set point size
+// Set point size
 viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
 
-// add arrow
+// Add arrow
 viewer.addArrow<pcl::PointXYZ>(pcl::PointXYZ(0,0,0), pcl::PointXYZ(0,0,1), 255, 0, 0, false, "arrow", 0);
 
-//添加需要显示的点云数据     
-viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");    
+// Add Point Sets     
+viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
+
+// View loop    
 while(!viewer->wasStopped()){
     viewer->spinOnce (100);
     boost::this_thread::sleep (boost::posix_time::microseconds (10));
