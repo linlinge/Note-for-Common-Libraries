@@ -119,6 +119,12 @@ int main()
 ### [*Pixel Access*]()
 ```c++
 Mat dat= (Mat_<double>(3, 1) << 1,2,3);  // the type should be consistent
+
+// Method 01
 cout<<dat.ptr<double>(0)[0], dat.ptr<double>(1)[0], dat.ptr<double>(2)[0]<<endl;  
+
+
+// Method 02
+cout<<dat.at<double>(0,0)<<endl;
 ```
 
