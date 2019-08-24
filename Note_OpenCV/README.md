@@ -56,21 +56,28 @@ int main()
 ## Basic Operation  
 ### [*Matrix*]()    
 ```c++
-// create
+// Create
 Mat I1=(Mat_<double>(1,3) << 2,4,6);
 Mat I2=(Mat_<double>(1,3) << 1,2,3);
 
-// add 
+// Add 
 cout<<I1+I2<<endl;
 
-// substract
+// Substract
 cout<<I1-I2<<endl;
 
-// transpose  
+// Transpose  
 cout<<I1.t()<<endl;
 
+// Invert
+// CV_LU - 最佳主元选取的高斯消除法
+// CV_SVD - 奇异值分解法 (SVD)
+// CV_SVD_SYM - 对正定对称矩阵的 SVD 方法
+I1.inv(CV_LU);
 
-
+// 矩阵底部添加、删除元素
+A.push_back(B);    //B添加在A的底部，B可以是常数
+A.pop_back(m);    //从A的底部删除m行
 ```
 
 
