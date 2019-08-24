@@ -54,9 +54,31 @@ int main()
 
 
 ## Basic Operation  
+### [*Matrix*]()    
+```c++
+// create
+Mat I1=(Mat_<double>(1,3) << 2,4,6);
+Mat I2=(Mat_<double>(1,3) << 1,2,3);
 
-  
-### Create Mat
+// add 
+cout<<I1+I2<<endl;
+
+// substract
+cout<<I1-I2<<endl;
+
+// transpose  
+cout<<I1.t()<<endl;
+
+
+
+```
+
+
+
+
+
+
+### [*Create Mat*]()
 ```c++
 // Method1: Init and create at the same time
 Mat M(7,7,CV_32FC2,Scalar(1,3));
@@ -68,7 +90,7 @@ M.create(100,60,CV_8UC(15));
 ```
 
 
-### Rodrigues (Convert rotation vector to rotation matrix)
+### [*Rodrigues (Convert rotation vector to rotation matrix)*]()
 ```c++
 #include <iostream>
 #include <opencv2/opencv.hpp>
@@ -87,7 +109,7 @@ int main()
 }
 ```
 
-### Access Mat
+### [*Access Mat*]()
 ```c++
 Mat dat= (Mat_<double>(3, 1) << 1,2,3);  // the type should be consistent
 cout<<dat.ptr<double>(0)[0], dat.ptr<double>(1)[0], dat.ptr<double>(2)[0]<<endl;  
