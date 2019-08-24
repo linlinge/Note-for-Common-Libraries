@@ -85,7 +85,7 @@ A.pop_back(m);    //从A的底部删除m行
 
 
 
-### [*Create Mat*]()
+### [*Mat Create*]()
 ```c++
 // Method1: Init and create at the same time
 Mat M(7,7,CV_32FC2,Scalar(1,3));
