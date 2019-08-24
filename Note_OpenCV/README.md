@@ -90,7 +90,3 @@ int main()
 Mat dat= (Mat_<double>(3, 1) << 1,2,3);  // the type should be consistent
 cout<<dat.ptr<double>(0)[0], dat.ptr<double>(1)[0], dat.ptr<double>(2)[0]<<endl;  
 ```
-
-【**Description**】 This class is used to generate suitable projection orientations.  
-【&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Input**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;】 upright orientation, initial vector, interval arc.  
-【&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Output**&nbsp;&nbsp;&nbsp;】 projecton orientations.  
