@@ -83,4 +83,24 @@ cout<<monge_fit.condition_number()<<endl;
 cout<<monge_fit.pca_basis(i).first<<endl;
 ```
 
+### [*File Operation*]()  
+```c++
+typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
+typedef Kernel::FT FT;
+typedef Kernel::Point_3 Point;
+typedef Kernel::Vector_3 Vector;
+typedef CGAL::cpp11::array<unsigned char, 3> Color;
 
+
+CGAL::Exact_predicates_inexact_constructions_kernel::FT
+CGAL::Exact_predicates_inexact_constructions_kernel::Point_3
+CGAL::Exact_predicates_inexact_constructions_kernel::Vector_3
+CGAL::cpp11::array<unsigned char, 3>
+
+
+CGAL::cpp11::tuple<Point, Vector, Color, int>
+CGAL::Nth_of_tuple_property_map<0, CGAL::cpp11::tuple<Point, Vector, Color, int>> Point_map;
+CGAL::Nth_of_tuple_property_map<1, CGAL::cpp11::tuple<Point, Vector, Color, int>> Normal_map;
+CGAL::Nth_of_tuple_property_map<2, CGAL::cpp11::tuple<Point, Vector, Color, int>> Color_map;
+CGAL::Nth_of_tuple_property_map<3, CGAL::cpp11::tuple<Point, Vector, Color, int>> Intensity_map;
+```
