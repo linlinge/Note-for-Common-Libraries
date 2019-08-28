@@ -109,9 +109,20 @@ typedef CGAL::Nth_of_tuple_property_map<3, CGAL::cpp11::tuple<Point, Vector, Col
 std::vector<CGAL::cpp11::tuple<Point, Vector, Color, int>> points;
 
 // read ply
-CGAL::read_ply_points_with_properties(in,std::back_inserter (points),CGAL::make_ply_point_reader (Point_map()),
-  std::make_pair(Intensity_map(),CGAL::PLY_property<int>("intensity")),
-  std::make_tuple(Color_map(), CGAL::Construct_array(), CGAL::PLY_property<unsigned char>("red"),CGAL::PLY_property<unsigned char>("green"),CGAL::PLY_property<unsigned char>("blue")),
-  CGAL::make_ply_normal_reader (Normal_map())
+CGAL::read_ply_points_with_properties(
+	in,
+	std::back_inserter (points),
+	CGAL::make_ply_point_reader(Point_map()),
+  	std::make_pair(
+			Intensity_map(),
+			CGAL::PLY_property<int>("intensity")
+			),
+  	std::make_tuple(
+			Color_map(), 
+			CGAL::Construct_array(), 
+			CGAL::PLY_property<unsigned char>("red"),CGAL::PLY_property<unsigned char>("green"),
+			CGAL::PLY_property<unsigned char>("blue")
+			),
+  	CGAL::make_ply_normal_reader (Normal_map())
   )
 ```
