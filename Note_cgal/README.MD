@@ -61,6 +61,9 @@ create_single_source_cgal_program( "main.cpp" CXX_FEATURES ${needed_cxx_features
 ## Structure  
 ```c++
 // Jet Fitting 3
+#include <CGAL/Simple_cartesian.h>
+#include <CGAL/Monge_via_jet_fitting.h>
+
 // CGAL::Simple_cartesian<double>::Point_3
 typedef CGAL::Simple_cartesian<double>     Data_Kernel;
 typedef Data_Kernel::Point_3     DPoint;
