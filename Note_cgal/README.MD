@@ -1,4 +1,8 @@
 # CGGAL Tutorial 
+## Reference  
+1.  [How to use CGAL with CMake or your own build system ?](https://github.com/CGAL/cgal/wiki/How-to-use-CGAL-with-CMake-or-your-own-build-system)  
+
+
 ## Installation
 	// In linux system 
 	# sudo apt-get install libcgal-dev
@@ -98,16 +102,10 @@ cout<<monge_fit.pca_basis(i).first<<endl;
 #include <CGAL/IO/read_ply_points.h>
 
 typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
-typedef Kernel::FT FT;
-typedef Kernel::Point_3 Point;
-typedef Kernel::Vector_3 Vector;
-typedef CGAL::cpp11::array<unsigned char, 3> Color;
-
-
 CGAL::Exact_predicates_inexact_constructions_kernel::FT
 CGAL::Exact_predicates_inexact_constructions_kernel::Point_3
 CGAL::Exact_predicates_inexact_constructions_kernel::Vector_3
-CGAL::cpp11::array<unsigned char, 3>
+CGAL::cpp11::array<unsigned char, 4> Color;
 
 
 typedef CGAL::cpp11::tuple<Point, Vector, Color, int> PNCI;
@@ -142,9 +140,21 @@ CGAL::read_ply_points_with_properties(
   	std::make_tuple(
 			Color_map(), 
 			CGAL::Construct_array(), 
-			CGAL::PLY_property<unsigned char>("red"),CGAL::PLY_property<unsigned char>("green"),
+			CGAL::PLY_property<unsigned char>("red"),
+			CGAL::PLY_property<unsigned char>("green"),
 			CGAL::PLY_property<unsigned char>("blue")
+			CGAL::PLY_property<unsigned char>("alpha")
 			),
   	CGAL::make_ply_normal_reader (Normal_map())
   )
+
+CGAL::write_ply_points_with_properties
+    (f, points.begin(), points.end(),
+     CGAL::make_ply_point_writer (Point_map()),
+     std::make_tuple(Color_map(),
+                     CGAL::PLY_property<unsigned char>("red"),
+                     CGAL::PLY_property<unsigned char>("green"),
+                     CGAL::PLY_property<unsigned char>("blue"),
+                     CGAL::PLY_property<unsigned char>("alpha")),
+     std::make_pair (Intensity_map(), CGAL::PLY_property<int>("intensity")));
 ```
