@@ -6,9 +6,9 @@
 	# sudo apt-get install libcgal-demo
 
 
-## Example 1: read and write ply file  
-main.cpp
-```
+## Template
+### [*main.cpp*]()
+```c++
 #include <iostream>
 #include <string>
 #include <CGAL/Point_set_3.h>
@@ -36,8 +36,8 @@ int main(int argc,char** argv)
 	return 0;
 }
 ```
-CMakeLists.txt   
-```
+### [*CMakeLists.txt*]()   
+```c++
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(read_write_ply_test)
 
@@ -58,3 +58,5 @@ endif()
 set(needed_cxx_features cxx_rvalue_references cxx_variadic_templates)    
 create_single_source_cgal_program( "main.cpp" CXX_FEATURES ${needed_cxx_features} )
 ```
+
+## Usage  
