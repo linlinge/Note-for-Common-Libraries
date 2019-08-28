@@ -58,5 +58,14 @@ endif()
 set(needed_cxx_features cxx_rvalue_references cxx_variadic_templates)    
 create_single_source_cgal_program( "main.cpp" CXX_FEATURES ${needed_cxx_features} )
 ```
+## Structure  
+```
+// Jet Fitting 3
+typedef CGAL::Simple_cartesian<double>     Data_Kernel;
+typedef Data_Kernel::Point_3     DPoint;
+typedef CGAL::Monge_via_jet_fitting<Data_Kernel> My_Monge_via_jet_fitting;
+typedef My_Monge_via_jet_fitting::Monge_form     My_Monge_form;
+```
 
-## Usage  
+## Common Usage  
+
