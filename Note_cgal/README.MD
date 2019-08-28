@@ -59,7 +59,7 @@ set(needed_cxx_features cxx_rvalue_references cxx_variadic_templates)
 create_single_source_cgal_program( "main.cpp" CXX_FEATURES ${needed_cxx_features} )
 ```
 ## Structure  
-```
+```c++
 // Jet Fitting 3
 typedef CGAL::Simple_cartesian<double>     Data_Kernel;
 typedef Data_Kernel::Point_3     DPoint;
