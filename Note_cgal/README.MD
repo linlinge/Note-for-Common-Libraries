@@ -121,6 +121,16 @@ typedef CGAL::Nth_of_tuple_property_map<3, CGAL::cpp11::tuple<Point, Vector, Col
 std::vector<CGAL::cpp11::tuple<Point, Vector, Color, int>> points;
 
 // read ply
+// method 01: read and write ply
+CGAL::Point_set_3<CGAL::Exact_predicates_inexact_constructions_kernel::Point_3> ps;
+ifstream fin(input_filename);
+ofstream fout(output_filename);
+CGAL::read_ply_point_set(fin,ps);
+CGAL::write_ply_point_set(fout,ps);
+
+
+// method 02: read ply with properties
+std::vector<CGAL::cpp11::tuple<Point, Vector, Color, int>> points;
 CGAL::read_ply_points_with_properties(
 	in,
 	std::back_inserter (points),
