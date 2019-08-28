@@ -65,31 +65,14 @@ create_single_source_cgal_program( "main.cpp" CXX_FEATURES ${needed_cxx_features
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Monge_via_jet_fitting.h>
 
-// CGAL::Simple_cartesian<double>::Point_3
-typedef CGAL::Simple_cartesian<double>     Data_Kernel;
-typedef Data_Kernel::Point_3     DPoint;
-
 // cartesion coordinate
-// new
-DPoint p(1.0,2.0,3.0);
-// original
 CGAL::Simple_cartesian<double>::Point_3 p(1.0,2.0,3.0);
 
 
-//CGAL::Monge_via_jet_fitting<CGAL::Simple_cartesian<double>>::Monge_form
-typedef CGAL::Monge_via_jet_fitting<Data_Kernel> My_Monge_via_jet_fitting;
-typedef My_Monge_via_jet_fitting::Monge_form     My_Monge_form;
-
 // monge form
-// new
-My_Monge_form monge_form;
-// original
-CGAL::Monge_via_jet_fitting<CGAL::Simple_cartesian<double>>::Monge_form
+CGAL::Monge_via_jet_fitting<CGAL::Simple_cartesian<double>>::Monge_form monge_form;
 
 // jet fitting
-// new 
-My_Monge_via_jet_fitting monge_fit;
-// original
 CGAL::Monge_via_jet_fitting< CGAL::Simple_cartesian<double>> monge_fit;
 
 monge_form = monge_fit(in_points.begin(), in_points.end(), d_fitting, d_monge);
