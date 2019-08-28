@@ -58,7 +58,8 @@ endif()
 set(needed_cxx_features cxx_rvalue_references cxx_variadic_templates)    
 create_single_source_cgal_program( "main.cpp" CXX_FEATURES ${needed_cxx_features} )
 ```
-## Structure  
+## Common Usages 
+### [*Jet Fitting*]()
 ```c++
 // Jet Fitting 3
 #include <CGAL/Simple_cartesian.h>
@@ -87,5 +88,4 @@ cout<<monge_fit.condition_number()<<endl;
 cout<<monge_fit.pca_basis(i).first<<endl;
 ```
 
-## Common Usage  
 
