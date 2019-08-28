@@ -64,6 +64,10 @@ create_single_source_cgal_program( "main.cpp" CXX_FEATURES ${needed_cxx_features
 // CGAL::Simple_cartesian<double>::Point_3
 typedef CGAL::Simple_cartesian<double>     Data_Kernel;
 typedef Data_Kernel::Point_3     DPoint;
+// Definition
+// with new definition
+DPoint p(1.0,2.0,3.0);
+// with original definition
 CGAL::Simple_cartesian<double>::Point_3 p(1.0,2.0,3.0);
 
 //CGAL::Monge_via_jet_fitting<CGAL::Simple_cartesian<double>>::Monge_form
