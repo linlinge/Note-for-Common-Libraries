@@ -78,8 +78,18 @@ CGAL::Simple_cartesian<double>::Point_3 p(1.0,2.0,3.0);
 typedef CGAL::Monge_via_jet_fitting<Data_Kernel> My_Monge_via_jet_fitting;
 typedef My_Monge_via_jet_fitting::Monge_form     My_Monge_form;
 
+// monge form
+// new
 My_Monge_form monge_form;
+// original
+CGAL::Monge_via_jet_fitting<CGAL::Simple_cartesian<double>>::Monge_form
+
+// jet fitting
+// new 
 My_Monge_via_jet_fitting monge_fit;
+// original
+CGAL::Monge_via_jet_fitting< CGAL::Simple_cartesian<double>> monge_fit;
+
 monge_form = monge_fit(in_points.begin(), in_points.end(), d_fitting, d_monge);
 
 //result 
