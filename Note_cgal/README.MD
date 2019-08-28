@@ -58,6 +58,16 @@ endif()
 set(needed_cxx_features cxx_rvalue_references cxx_variadic_templates)    
 create_single_source_cgal_program( "main.cpp" CXX_FEATURES ${needed_cxx_features} )
 ```
+## Structure  
+### [*Predefined Kernel*]()
+```c++
+CGAL::Exact_predicates_exact_constructions_kernel
+CGAL::Exact_predicates_exact_constructions_kernel_with_sqrt
+CGAL::Exact_predicates_exact_constructions_kernel_with_kth_root
+CGAL::Exact_predicates_exact_constructions_kernel_with_root_of
+CGAL::Cartesian
+```
+
 ## Common Usages 
 ### [*Jet Fitting*]()
 ```c++
@@ -85,6 +95,8 @@ cout<<monge_fit.pca_basis(i).first<<endl;
 
 ### [*File Operation*]()  
 ```c++
+#include <CGAL/IO/read_ply_points.h>
+
 typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
 typedef Kernel::FT FT;
 typedef Kernel::Point_3 Point;
