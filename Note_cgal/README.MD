@@ -39,7 +39,7 @@ int main(int argc,char** argv)
 ### [*CMakeLists.txt*]()   
 ```c++
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-PROJECT(read_write_ply_test)
+PROJECT(cgal_demo)
 
 # CGAL and its components
 find_package( CGAL REQUIRED)
