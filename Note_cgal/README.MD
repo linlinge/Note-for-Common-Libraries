@@ -98,9 +98,9 @@ CGAL::Exact_predicates_inexact_constructions_kernel::Vector_3
 CGAL::cpp11::array<unsigned char, 3>
 
 
-CGAL::cpp11::tuple<Point, Vector, Color, int>
-CGAL::Nth_of_tuple_property_map<0, CGAL::cpp11::tuple<Point, Vector, Color, int>> Point_map;
-CGAL::Nth_of_tuple_property_map<1, CGAL::cpp11::tuple<Point, Vector, Color, int>> Normal_map;
-CGAL::Nth_of_tuple_property_map<2, CGAL::cpp11::tuple<Point, Vector, Color, int>> Color_map;
-CGAL::Nth_of_tuple_property_map<3, CGAL::cpp11::tuple<Point, Vector, Color, int>> Intensity_map;
+// CGAL::cpp11::tuple<Point, Vector, Color, int>
+typedef CGAL::Nth_of_tuple_property_map<0, CGAL::cpp11::tuple<Point, Vector, Color, int>> Point_map;
+typedef CGAL::Nth_of_tuple_property_map<1, CGAL::cpp11::tuple<Point, Vector, Color, int>> Normal_map;
+typedef CGAL::Nth_of_tuple_property_map<2, CGAL::cpp11::tuple<Point, Vector, Color, int>> Color_map;
+typedef CGAL::Nth_of_tuple_property_map<3, CGAL::cpp11::tuple<Point, Vector, Color, int>> Intensity_map;
 ```
