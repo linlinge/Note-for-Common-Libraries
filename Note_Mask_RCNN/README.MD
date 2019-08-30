@@ -23,6 +23,12 @@ Note:
 * keras
 * jupyter
 
+Note:
+```c++
+// Install imgaug
+# conda install -c https://conda.anaconda.org/conda-forge imgaug
+```
+
 ### [*Step 3: Clone the Mask_RCNN repo*]()
 ```c++
 # git clone https://github.com/matterport/Mask_RCNN.git
@@ -38,13 +44,13 @@ Note:
 ```
 3. Install pycocotools
 ```c++
-pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
+# conda install git
+# pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
 ```
 
 ### [*Step 5: Download the pre-trained weights*]()  
-1. Download [*Pre-trained Weights*](https://github.com/matterport/Mask_RCNN/releases)
-2. Download mask_rcnn_coco.h5
-3. Place the file in the Mask_RCNN directory
+1. Download Pre-trained Weights [*mask_rcnn_coco.h5*](https://github.com/matterport/Mask_RCNN/releases)
+2. Place the file in the Mask_RCNN directory
 
 ### [*Step 6: Test it*]()
 Open up the demo.ipynb and run it
