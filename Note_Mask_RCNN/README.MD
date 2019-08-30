@@ -58,5 +58,5 @@ Note:
 # conda install jupyter notebook
 ```
 
-### [*Step 6: Test it*]()
+### [*Step 7: Test it*]()
 Open up the demo.ipynb and run it
