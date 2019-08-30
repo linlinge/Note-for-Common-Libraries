@@ -42,7 +42,7 @@ pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonA
 ```
 
 ### [*Step 5: Download the pre-trained weights*]()  
-1. Download [*Pre-trained Weights*](https://github.com/matterport/Mask_RCNN/release)
+1. Download [*Pre-trained Weights*](https://github.com/matterport/Mask_RCNN/releases)
 2. Download mask_rcnn_coco.h5
 3. Place the file in the Mask_RCNN directory
 
