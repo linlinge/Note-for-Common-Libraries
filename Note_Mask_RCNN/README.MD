@@ -6,8 +6,8 @@
 ```
 
 ### [*Step 2: Install the dependencies*]()  
-Download [*requirements.txt*](https://github.com/markjay4k/Mask-RCNN-series/blob/master/requirements.txt)
-
+1. Download [*requirements.txt*](https://github.com/markjay4k/Mask-RCNN-series/blob/master/requirements.txt)
+2. Install 
 ```c++
 # conda activate MaskRCNN
 # pip install -r requirements.txt
