@@ -34,7 +34,7 @@ Note:
 1.  Download [*Visual C++ 2015 Build Tools*](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019)
 2. Clone Repo
 ```c++
-# git clone https://github.com/phiferriere/cocoapi.git
+# git clone https://github.com/philferriere/cocoapi.git
 ```
 3. Install pycocotools
 ```c++
