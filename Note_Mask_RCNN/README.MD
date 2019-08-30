@@ -53,5 +53,10 @@ Note:
 1. Download Pre-trained Weights [*mask_rcnn_coco.h5*](https://github.com/matterport/Mask_RCNN/releases)
 2. Place the file in the Mask_RCNN directory
 
+### [*Step 6: Install Jupyter book in conda*]()
+```c++
+# conda install jupyter notebook
+```
+
 ### [*Step 6: Test it*]()
 Open up the demo.ipynb and run it
