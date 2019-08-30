@@ -6,6 +6,7 @@
 ```
 
 ### [*Step 2: Install the dependencies*]()  
+Download [*requirements.txt*](https://github.com/markjay4k/Mask-RCNN-series/blob/master/requirements.txt)
 
 ```c++
 # conda activate MaskRCNN
