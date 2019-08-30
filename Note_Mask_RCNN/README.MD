@@ -43,9 +43,10 @@ Note:
 # git clone https://github.com/philferriere/cocoapi.git
 ```
 3. Install pycocotools
+[*reference website*](https://blog.csdn.net/oMoDao1/article/details/81302365) 
 ```c++
-# conda install git
-# pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
+# git clone https://github.com/cocodataset/cocoapi.git
+# python setup.py install
 ```
 
 ### [*Step 5: Download the pre-trained weights*]()  
