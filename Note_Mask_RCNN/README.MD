@@ -8,7 +8,7 @@
 ### [*Step 2: Install the dependencies*]()  
 
 ```c++
-# actvitate MaskRCNN
+# conda activate MaskRCNN
 # pip install -r requirements.txt
 ```
 Note:
