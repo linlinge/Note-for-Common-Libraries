@@ -33,7 +33,7 @@ target_link_libraries (pcl_demo ${PCL_LIBRARIES})
 #include <pcl/kdtree/kdtree_flann.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/surface/gp3.h>	
-typedef PointTypeRGBA PointType;
+typedef PointRGBA PointType;
 int main()
 {
 	pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
