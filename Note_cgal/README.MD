@@ -40,7 +40,17 @@ int main(int argc,char** argv)
 	return 0;
 }
 ```
-### [*CMakeLists.txt*]()   
+### [*CMakeLists.txt (Version 1)*]()
+```c++
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+PROJECT(cgal_demo)
+
+find_package(CGAL REQUIRED COMPONENTS Core)
+add_executable(cgal_demo main.cpp)
+target_link_libraries(cgal_demo CGAL::CGAL CGAL::CGAL_Core)
+```
+
+### [*CMakeLists.txt (Version 2)*]()   
 ```c++
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(cgal_demo)
