@@ -33,11 +33,11 @@ target_link_libraries (pcl_demo ${PCL_LIBRARIES})
 #include <pcl/kdtree/kdtree_flann.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/surface/gp3.h>	
-typedef PointRGBA PointType;
-int main()
+typedef pcl::PointXYZRGBA PointType;
+int main(int argc,char** argv)
 {
 	pcl::PointCloud<PointType>::Ptr cloud(new pcl::PointCloud<PointType>);
-	if (pcl::io::loadPLYFile<PointType>("/home/linlinge/Desktop/1.ply", *cloud) == -1) 
+	if (pcl::io::loadPLYFile<PointType>(argv[1], *cloud) == -1) 
 	{
 		PCL_ERROR("Couldn't read file test_pcd.pcd \n");
 		return (-1);
@@ -60,7 +60,6 @@ int main()
 		boost::this_thread::sleep (boost::posix_time::microseconds (10));
 	}
 }
-
 ```
 
 ## Common Usages
