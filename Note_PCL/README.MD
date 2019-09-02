@@ -76,16 +76,16 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer>
 viewer->setBackgroundColor (0.33, 0.97, 0.59); 
 
 // Make sure addCoordinateSystem is before setBackgroundColor
-viewer.addCoordinateSystem(1.0f); 
+viewer->addCoordinateSystem(1.0f); 
    
 // 设置点云颜色，该处为单一颜色设置
 pcl::visualization::PointCloudColorHandlerCustom<PointType> single_color(cloud, 255, 255, 255);
 
 // Set point size
-viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
+viewer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "cloud name");
 
 // Add arrow
-viewer.addArrow<pcl::PointXYZ>(pcl::PointXYZ(0,0,0), pcl::PointXYZ(0,0,1), 1.0f, 0, 0, false, "arrow", 0);
+viewer->addArrow<pcl::PointXYZ>(pcl::PointXYZ(0,0,0), pcl::PointXYZ(0,0,1), 1.0f, 0, 0, false, "arrow", 0);
 
 // Add Point Sets     
 viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
@@ -106,6 +106,19 @@ pcl::visualization::CloudViewer viewer("Viewer");
 viewer.showCloud(cloud);
 while(!viewer.wasStopped());
 ``` 
+
+### [*Initialize PointCloud Ptr in Class Member*]()
+**Method1**
+```c++
+cloud_in = PointCloudT::Ptr(new PointCloudT)
+```
+
+**Method2**
+```c++
+PclRegister()
+  : cloud_in(new PointCloudT),
+{}
+```
 
 
 ### [*Read and write*]()  
