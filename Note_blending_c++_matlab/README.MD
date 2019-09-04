@@ -58,7 +58,7 @@ int main()
 ```c++
 cmake_minimum_required(VERSION 3.0)
  
-set(PROJECT_NAME wokaka)
+set(PROJECT_NAME myPrj)
  
 project(${PROJECT_NAME})
  
@@ -77,7 +77,7 @@ include_directories(${MYPR}include/)
 LINK_DIRECTORIES(${MYPR}src/)
 
 set(SRCS main.cpp)
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} SRCS)
 target_link_libraries(${PROJECT_NAME} mwmclmcrrt)
 target_link_libraries(${PROJECT_NAME} add)
 ```
