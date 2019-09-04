@@ -14,13 +14,13 @@
 >> exit
 ```
 
-### [*Edit libmyfun.m*]()
+### [*Step 3: Edit libmyfun.m*]()
 ```Matlab
 function rst=add(a,b)
 rst=a+b;
 ```
 
-### [*Compile libmyfun.m*]()
+### [*Step 4: Compile libmyfun.m*]()
 ```Matlab
 >> mcc -W cpplib:libmyfun -T link:lib libmyfun.m
 ```
