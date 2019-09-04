@@ -32,7 +32,8 @@ target_link_libraries (pcl_demo ${PCL_LIBRARIES})
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/kdtree/kdtree_flann.h>
 #include <pcl/features/normal_3d.h>
-#include <pcl/surface/gp3.h>	
+#include <pcl/surface/gp3.h>
+#include<thread>	
 typedef pcl::PointXYZRGBA PointType;
 int main(int argc,char** argv)
 {
@@ -57,7 +58,8 @@ int main(int argc,char** argv)
 
 	while(!viewer->wasStopped()){	
 		viewer->spin();
-		boost::this_thread::sleep (boost::posix_time::microseconds (10));
+		// boost::this_thread::sleep (boost::posix_time::microseconds (10));
+		std::this_thread::sleep_for(10ms);
 	}
 }
 ```
