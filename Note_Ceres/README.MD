@@ -50,9 +50,10 @@ int main(int argc, char** argv) {
 
 	// 第二部分：构建寻优问题
 	Problem problem;
-	CostFunction* cost_function =
-	new AutoDiffCostFunction<CostFunctor, 1, 1>(new CostFunctor); //使用自动求导，将之前的代价函数结构体传入，第一个1是输出维度，即残差的维度，第二个1是输入维度，即待寻优参数x的维度。
-	problem.AddResidualBlock(cost_function, NULL, &x); //向问题中添加误差项，本问题比较简单，添加一个就行。
+	//使用自动求导，将之前的代价函数结构体传入，第一个1是输出维度，即残差的维度，第二个1是输入维度，即待寻优参数x的维度。
+	CostFunction* cost_function = new AutoDiffCostFunction<CostFunctor, 1, 1>(new CostFunctor); 
+	//向问题中添加误差项，本问题比较简单，添加一个就行。
+	problem.AddResidualBlock(cost_function, NULL, &x); 
 
 	//第三部分： 配置并运行求解器
 	Solver::Options options;
@@ -63,7 +64,6 @@ int main(int argc, char** argv) {
 
 	std::cout << summary.BriefReport() << "\n";//输出优化的简要信息
 	//最终结果
-
 	cout<<endl<<"Result"<<endl;
 	cout << "	x : "<< x << "\n";
 	return 0;
