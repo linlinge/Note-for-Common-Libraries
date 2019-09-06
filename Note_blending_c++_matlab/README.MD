@@ -21,6 +21,7 @@ rst=a+b;
 ```
 
 ### [*Step 4: Compile libmyfun.m*]()
+Note: *.m file should start with "lib"
 ```Matlab
 >> mcc -W cpplib:libmyfun -T link:lib libmyfun.m
 ```

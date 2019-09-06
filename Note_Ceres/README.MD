@@ -21,3 +21,5 @@ Download from [GitHub](https://github.com/ceres-solver/ceres-solver)
 # sudo apt-get update
 # sudo apt-get install libsuitesparse-dev
 ```
+
+## Example  
