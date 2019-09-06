@@ -1,7 +1,7 @@
 # <centre> Ceres Tutorial </centre>
 ## Installation
 Download from [github](https://github.com/ceres-solver/ceres-solver)
-```vb
+```shell
 # CMake
 sudo apt-get install cmake
 # google-glog + gflags
