@@ -1,4 +1,4 @@
-# <br> Ceres Tutorial </br>
+# <centre> Ceres Tutorial </centre>
 ## Installation
 Download from [github](https://github.com/ceres-solver/ceres-solver)
 ```c++
