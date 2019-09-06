@@ -1,6 +1,6 @@
 # <centre> Ceres Tutorial </centre>
 ## Installation
-Download from [github](https://github.com/ceres-solver/ceres-solver)
+Download from [Github](https://github.com/ceres-solver/ceres-solver)
 ```shell
 # CMake
 sudo apt-get install cmake
