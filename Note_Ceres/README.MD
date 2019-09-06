@@ -50,7 +50,9 @@ int main(int argc, char** argv) {
 
 	// 第二部分：构建寻优问题
 	Problem problem;
-	//使用自动求导，将之前的代价函数结构体传入，第一个1是输出维度，即残差的维度，第二个1是输入维度，即待寻优参数x的维度。
+	// 使用自动求导，将之前的代价函数结构体传入，
+	// 第一个1是输出维度，即残差的维度，
+	// 第二个1是输入维度，即待寻优参数x的维度。
 	CostFunction* cost_function = new AutoDiffCostFunction<CostFunctor, 1, 1>(new CostFunctor); 
 	//向问题中添加误差项，本问题比较简单，添加一个就行。
 	problem.AddResidualBlock(cost_function, NULL, &x); 
