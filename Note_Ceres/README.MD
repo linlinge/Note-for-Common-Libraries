@@ -31,7 +31,7 @@ Download from [GitHub](https://github.com/ceres-solver/ceres-solver)
 using namespace std;
 using namespace ceres;
 
-//第一部分：构建代价函数，重载（）符号，仿函数的小技巧
+//第一部分：构建代价函数，重载()符号，仿函数的小技巧
 struct CostFunctor {
    template <typename T>
    bool operator()(const T* const x, T* residual) const {
