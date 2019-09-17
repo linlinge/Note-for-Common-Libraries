@@ -1,7 +1,10 @@
 # Introduction of VTK  
 ## Installation  
+Download [*VTK*](https://vtk.org/download/)
 ```bash
-# sudo apt-get install libvtk5-dev
+# sudo apt  install cmake-curses-gui
+# sudo apt-get install freeglut3-dev
+
 ```
 
 ## Example
