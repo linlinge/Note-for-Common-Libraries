@@ -243,7 +243,6 @@ ne.compute (*cloud_normals);
 ```
 
 ### [*Octree*]()
-**Establish**
 ```c++
 // 最小体素的边长
 float resolution = 0.001;
