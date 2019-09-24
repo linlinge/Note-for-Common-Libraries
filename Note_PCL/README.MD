@@ -262,8 +262,8 @@ for (auto it = octree.begin(depth);it != octree.end();++it){
 		octree.getVoxelBounds(it, voxel_min, voxel_max);
 		
 		/* 
-			std::cout << "最小值： " << voxel_min.x() << " " << voxel_min.y() << " " << voxel_min.z() << std::endl;
-			std::cout << "最大值： " << voxel_max.x() << " " << voxel_max.y() << " " << voxel_max.z() << std::endl;
+		cout << "最小值： " << voxel_min.x() << " " << voxel_min.y() << " " << voxel_min.z() <<endl;
+		cout << "最大值： " << voxel_max.x() << " " << voxel_max.y() << " " << voxel_max.z() <<endl;
 		*/
 		
 		// Get indices in each voxel
