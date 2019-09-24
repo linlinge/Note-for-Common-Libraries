@@ -257,7 +257,7 @@ octree.addPointsFromInputCloud();
 int depth = octree.getTreeDepth();
 for (auto it = octree.begin(depth);it != octree.end();++it){
 	if (it.isLeafNode()){
-		// Get minimum and maximum point of each voxel
+		// Get minimum and maximum boundary of each voxel
 		Eigen::Vector3f  voxel_min, voxel_max;
 		octree.getVoxelBounds(it, voxel_min, voxel_max);
 		
