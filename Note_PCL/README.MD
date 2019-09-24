@@ -241,3 +241,36 @@ ne.setRadiusSearch (0.03);
 // Compute the features
 ne.compute (*cloud_normals);
 ```
+
+### [*Octree*]()
+**Establish**
+```c++
+// 最小体素的边长
+float resolution = 0.001;
+pcl::octree::OctreePointCloudSearch<PointType> octree(resolution);
+octree.setInputCloud(cloud);
+
+// 从输入点云构建八叉树
+octree.addPointsFromInputCloud();
+
+// 求出体素边界
+int depth = octree.getTreeDepth();
+for (auto it = octree.begin(depth);it != octree.end();++it){
+	if (it.isLeafNode()){
+		// Get minimum and maximum point of each voxel
+		Eigen::Vector3f  voxel_min, voxel_max;
+		octree.getVoxelBounds(it, voxel_min, voxel_max);
+		
+		/* 
+			std::cout << "最小值： " << voxel_min.x() << " " << voxel_min.y() << " " << voxel_min.z() << std::endl;
+			std::cout << "最大值： " << voxel_max.x() << " " << voxel_max.y() << " " << voxel_max.z() << std::endl;
+		*/
+		
+		// Get indices in each voxel
+		auto leaf = it.getLeafContainer();
+		std::vector<int> indices; 
+		leaf.getPointIndices(indices);
+	}
+}
+```
+
