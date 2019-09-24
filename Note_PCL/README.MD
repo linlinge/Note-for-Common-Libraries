@@ -265,7 +265,7 @@ for (auto it = octree.begin(depth);it != octree.end();++it){
 		cout << "最大值： " << voxel_max.x() << " " << voxel_max.y() << " " << voxel_max.z() <<endl;
 		*/
 		
-		// Get indices in each voxel
+		// Get points indices in each voxel
 		auto leaf = it.getLeafContainer();
 		std::vector<int> indices; 
 		leaf.getPointIndices(indices);
