@@ -35,3 +35,11 @@
 
 	A.transpose();
 
+**Transformation**
+```
+Eigen::Affine3f tf = Eigen::Affine3f::Identity();
+tf.translation()<<0,0,0;
+tf.rotate(Eigen::AngleAxisf(alpha, Eigen::Vector3f::UnitZ()));
+Eigen::Vector3f val(orientations_[i].x,orientations_[i].y,orientations_[i].z);
+cout<<(tf*val).transpose()<<endl;
+```
