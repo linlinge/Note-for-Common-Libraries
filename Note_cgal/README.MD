@@ -108,7 +108,7 @@ cout<<monge_fit.pca_basis(i).first<<endl;
 ```
 
 ### [*File Operation*]()  
-[*PLY file*]()
+[**PLY file**]()
 ```c++
 #include <CGAL/IO/read_ply_points.h>
 
@@ -168,4 +168,34 @@ CGAL::write_ply_points_with_properties
                      CGAL::PLY_property<unsigned char>("blue"),
                      CGAL::PLY_property<unsigned char>("alpha")),
      std::make_pair (Intensity_map(), CGAL::PLY_property<int>("intensity")));
+```
+
+[**xyz file**]()
+```c++
+#include <CGAL/property_map.h>
+#include <CGAL/IO/read_xyz_points.h>
+#include <CGAL/IO/write_xyz_points.h>
+typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
+typedef Kernel::Point_3 Point;
+
+// read
+const char* fname = (argc>1)?argv[1]:"data/oni.xyz";
+// Reads a .xyz point set file in points[].
+// The Identity_property_map property map can be omitted here as it is the default value.
+std::vector<Point> points;
+std::ifstream stream(fname);
+if (!stream ||
+  !CGAL::read_xyz_points(stream, std::back_inserter(points),
+						 CGAL::parameters::point_map(CGAL::Identity_property_map<Point>())))
+{
+std::cerr << "Error: cannot read file " << fname << std::endl;
+return EXIT_FAILURE;
+}
+
+// write
+std::ofstream out("statistics-outlier-removal.xyz");    
+if (!out ||!CGAL::write_xyz_points(out, points,CGAL::parameters::point_map(CGAL::Identity_property_map<Point>())))
+{
+  return EXIT_FAILURE;
+}
 ```
