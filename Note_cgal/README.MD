@@ -199,3 +199,11 @@ if (!out ||!CGAL::write_xyz_points(out, points,CGAL::parameters::point_map(CGAL:
   return EXIT_FAILURE;
 }
 ```
+
+
+
+## Relationship
+```c++
+#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
+```
+
