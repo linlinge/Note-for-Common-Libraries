@@ -275,4 +275,36 @@ for (auto it = octree.begin(depth);it != octree.end();++it){
 	}
 }
 ```
+*Octree Properties*
+```
+// Step01: Define Octree and set resolution
+pcl::octree::OctreePointCloudSearch<PointType>::Ptr octree_=
+pcl::octree::OctreePointCloudSearch<PointType>::Ptr(new pcl::octree::OctreePointCloudSearch<PointType>(0.01));
 
+// Step02: establis octree
+octree_->setInputCloud(cloud_);
+octree_->addPointsFromInputCloud(); // create octree from point cloud
+
+// Properties:
+// Get Depth
+int depth = octree_->getTreeDepth();
+
+// Traversing leaf node
+for (auto it = octree_->begin(depth);it != octree_->end();++it){	
+	if(it.isLeafNode()){
+		
+		// Calculate Voxel bounding box
+		Eigen::Vector3f  voxel_min, voxel_max;
+		octree_->getVoxelBounds(it, voxel_min, voxel_max);
+
+		// Get Bounding Box Centre
+		Eigen::Vector3f voxel_centre;
+		voxel_centre=(voxel_min+voxel_max)/2.0f;
+
+		// Get all points indices in each voxel
+		auto leaf = it.getLeafContainer();
+		std::vector<int> indices; 
+		leaf.getPointIndices(indices);
+	}
+}
+```
