@@ -115,7 +115,10 @@ while(!viewer.wasStopped());
 ### [*Initialize PointCloud Ptr in Class Member*]()
 **Method1**
 ```c++
+// 
 cloud_in = PointCloudT::Ptr(new PointCloudT)
+// or
+cloud_outlier_=pcl::PointCloud<PointType>::Ptr(new pcl::PointCloud<PointType>);
 ```
 
 **Method2**
