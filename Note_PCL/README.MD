@@ -276,7 +276,7 @@ for (auto it = octree.begin(depth);it != octree.end();++it){
 }
 ```
 *Octree Properties*
-```
+```c++
 // Step01: Define Octree and set resolution
 pcl::octree::OctreePointCloudSearch<PointType>::Ptr octree_=
 pcl::octree::OctreePointCloudSearch<PointType>::Ptr(new pcl::octree::OctreePointCloudSearch<PointType>(0.01));
