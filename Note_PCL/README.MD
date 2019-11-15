@@ -308,3 +308,19 @@ for (auto it = octree_->begin(depth);it != octree_->end();++it){
 	}
 }
 ```
+
+*Calculate Eigenvalue and Eigenvector*
+```
+Eigen::Vector4f centroid;
+Eigen::Matrix3f covariance;
+pcl::compute3DCentroid(*cloud, centroid);
+pcl::computeCovarianceMatrixNormalized(*cloud, centroid, covariance);	
+Eigen::SelfAdjointEigenSolver<Eigen::Matrix3f> eigen_solver(covariance, Eigen::ComputeEigenvectors);
+Eigen::Matrix3f eig_vec = eigen_solver.eigenvectors();	
+Eigen::Vector3f eig_val = eigen_solver.eigenvalues();
+
+eig_vec.col(2) = eig_vec.col(0).cross(eig_vec.col(1));
+eig_vec.col(0) = eig_vec.col(1).cross(eig_vec.col(2));
+eig_vec.col(1) = eig_vec.col(2).cross(eig_vec.col(0));
+cout<<eig_val<<endl;
+```
