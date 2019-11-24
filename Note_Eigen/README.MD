@@ -19,6 +19,11 @@ add_executable (eigen_example main.cpp)
 using Eigen::MatrixXd;
 int main()
 {
+	/*
+	Eigen::MatrixXd - Matrix of double
+	Eigen::MatrixXf - Matrix of float
+	Eigen::MatrixXi - Matrix of int
+	*/
 	MatrixXd m(2,2);
 	m(0,0) = 3;
 	m(1,0) = 2.5;
