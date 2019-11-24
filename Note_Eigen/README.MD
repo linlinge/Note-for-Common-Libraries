@@ -34,23 +34,20 @@ int main()
 ```
 
 ## Operation  
-**Header**
 ```c++
+// Header
 #include <Eigen/Dense>
-```
 
-**Invert**
-```c++	
+// Invert
 A.inverse();
-```
 
-**Transpose**
-```c++
+// Transpose
 A.transpose();
-```
 
-**Transformation**
-```c++
+// Merge
+M<<m1,m2;
+
+// Transformation
 Eigen::Affine3f tf = Eigen::Affine3f::Identity();
 tf.translation()<<0,0,0;
 tf.rotate(Eigen::AngleAxisf(alpha, Eigen::Vector3f::UnitZ()));
