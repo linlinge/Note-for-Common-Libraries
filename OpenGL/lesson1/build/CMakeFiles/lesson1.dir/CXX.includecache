@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linlinge/ZJU/OpenGL_LESSONS/lesson1/main.cpp
+GL/glut.h
+-
+
