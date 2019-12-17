@@ -12,7 +12,8 @@ https://solarianprogrammer.com/2017/03/24/getting-started-armadillo-cpp-linear-a
 // http://arma.sourceforge.net/download.html
 # cd Downloads/
 # cd arma*
-# cmake .
+# mkdir build & cd build
+# cmake ..
 # make
 # sudo make install
 ```
