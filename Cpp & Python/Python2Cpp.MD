@@ -35,19 +35,21 @@ int main()
     }
 
     PyRun_SimpleString("import sys");
-    PyRun_SimpleString("sys.path.append('/home/llg/workspace_cmake/T01-for-Armadillo/')");//这一步很重要，修改Python路径
-
+    //这一步很重要，修改Python路径
+    PyRun_SimpleString("sys.path.append('/home/llg/workspace_cmake/T01-for-Armadillo/')");
 
     PyObject * pModule = NULL;//声明变量
     PyObject * pFunc = NULL;// 声明变量
 
     pModule = PyImport_ImportModule("myadd");//这里是要调用的文件名hello.py
-    if (pModule == NULL)
-    {
-        cout << "没找到" << endl;
+    if (pModule == NULL){
+        cout<<"Module Load Failed!"<< endl;
     }
 
     pFunc = PyObject_GetAttrString(pModule, "myadd");//这里是要调用的函数名
+    if(pFun==NULL){
+        cout<<"Function Load Failed!"<<endl;
+    }
     // PyObject* args = Py_BuildValue("ii", 28, 103);//给python函数参数赋值
     PyObject* args = Py_BuildValue("ii",1,2);//给python函数参数赋值
     PyObject* pRet = PyObject_CallObject(pFunc, args);//调用函数
