@@ -1,4 +1,4 @@
-## Embench Python Into C++  
+## Embench Python Into C++  (Simple Variable)
 *myadd.py*  
 ```python
 def myadd(a,b):
@@ -16,7 +16,7 @@ include_directories(${PYTHON_INCLUDE_DIRS})
 # exe
 add_executable(ArmadilloDemo main.cpp)
 
-# link: python
+# python
 target_link_libraries(ArmadilloDemo ${PYTHON_LIBRARIES})
 ```
 
@@ -62,3 +62,37 @@ int main()
     return 0;
 }
 ```
+
+## C++ Vector to python numpy
+```c++
+PyObject* args = PyTuple_New(1);
+PyObject* pyListX = PyList_New(2);
+PyObject* pyListY = PyList_New(2);
+PyList_SetItem(pyListX, 0, PyFloat_FromDouble( 1.1 ));
+PyList_SetItem(pyListX, 1, PyFloat_FromDouble( 2.2 ));
+PyTuple_SetItem(args, 0, pyListX);
+// Call Function
+PyObject* pReturnValue = PyObject_CallObject(pFunc, args);
+// 检查是否为List对象
+if(PyList_Check(pReturnValue )){
+    // List对象的大小，这里SizeOfList = 3
+    int SizeOfList = PyList_Size(pReturnValue);
+    for(int i = 0; i < SizeOfList; i++){
+        // 获取List对象中的每一个元素
+        PyObject *ListItem = PyList_GetItem(pReturnValue, i);
+        int NumOfItems = PyList_Size(ListItem);//List对象子元素的大小
+        for(int Index_k = 0; Index_k < NumOfItems; Index_k++){
+            // 遍历List对象中子元素中的每个元素
+            PyObject *Item = PyList_GetItem(ListItem, Index_k);            
+            // 输出元素
+            qDebug() << PyFloat_AsDouble(Item) <<"\n "; 
+            // 释放空间
+            Py_DECREF(Item);
+        }
+        // 释放空间
+        Py_DECREF(ListItem); 
+    }
+}
+```
+
+
