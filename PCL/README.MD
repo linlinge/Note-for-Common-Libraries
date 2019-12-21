@@ -200,17 +200,16 @@ viewer->addPointCloud<PointType> (cloud, single_color, "sample cloud");
 **K-nearest**
 ```c++
 int K=10;
-vector<int> pointIdxNKNSearch(K);
-vector<float> pointNKNSquaredDistance(K); 	
 pcl::search::KdTree<PointType>::Ptr kdtree (new pcl::search::KdTree<PointType>());
 kdtree->setInputCloud(cloud);
-
-if ( kdtree->nearestKSearch (cloud->points[0], K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 ){
-	for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
-	  std::cout << " "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
-				<< " " << cloud->points[ pointIdxNKNSearch[i] ].y 
-				<< " " << cloud->points[ pointIdxNKNSearch[i] ].z 
-				<< " (squared distance: " << pointNKNSquaredDistance[i] << ")" << std::endl;
+for(int i=0;i<cloud->points.size();i++){
+	vector<int> idx(K);
+	vector<float> dist(K);
+	pcl::PointCloud<PointType>::Ptr ctmp=pcl::PointCloud<PointType>::Ptr(new pcl::PointCloud<PointType>);
+	kdtree->nearestKSearch (cloud->points[i], K, idx, dist);
+	for(int j=0;j<idx.size();j++){
+	    ctmp->points.push_back(cloud->points[idx[j]]);
+	}      
 }
 ```
 
