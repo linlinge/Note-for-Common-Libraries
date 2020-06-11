@@ -8,7 +8,7 @@ apt-get install python3-matplotlib
 
 
 ## numpy matrix operation
-'''python
+```python
 # dot mutiply
 np.dot(A,B)
 # Transpose
