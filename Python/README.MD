@@ -7,9 +7,12 @@ apt-get install python3-matplotlib
 ```
 
 
-## array operation  
-### [*multiply*]()
-A*B : multiply each elements respectively.  
-multiply(A,B): same to A*B  
-dot(A,B): matrix multiply  
-cross(A,B): crossing for two vector
+## numpy matrix operation
+'''python
+# dot mutiply
+np.dot(A,B)
+# Transpose
+A.T 
+# Inverse
+np.linalg.inv(A)
+```
