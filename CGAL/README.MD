@@ -83,6 +83,43 @@ CGAL::Cartesian
 ```
 
 ## Common Usages 
+### [*Read (xyz, normal) *]()  
+```c++
+#include <CGAL/Simple_cartesian.h>
+#include <CGAL/IO/read_xyz_points.h>
+#include <CGAL/IO/write_xyz_points.h>
+#include <CGAL/property_map.h>
+// Types
+typedef CGAL::Simple_cartesian<double> Kernel;
+typedef Kernel::Point_3 Point;
+typedef Kernel::Vector_3 Vector;
+
+// Reads xyz_normals
+std::vector<PointVectorPair> points;
+std::ifstream stream(input_filename);
+if (!stream ||
+  !CGAL::read_xyz_points(stream,
+                 std::back_inserter(points),
+                 CGAL::parameters::point_map(CGAL::First_of_pair_property_map<PointVectorPair>()).
+                 normal_map(CGAL::Second_of_pair_property_map<PointVectorPair>())))
+{
+ std::cerr << "Error: cannot read file " << input_filename << std::endl;
+ return EXIT_FAILURE;
+}
+
+// Write xyz_normal
+std::ofstream out(output_filename);
+out.precision(17);
+if (!out ||
+  !CGAL::write_xyz_points(
+  out, points,
+  CGAL::parameters::point_map(CGAL::First_of_pair_property_map<PointVectorPair>()).
+  normal_map(CGAL::Second_of_pair_property_map<PointVectorPair>())))
+{
+	return EXIT_FAILURE;
+}
+```
+
 ### [*Jet Fitting*]()
 ```c++
 // Jet Fitting 3
