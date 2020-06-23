@@ -83,7 +83,7 @@ CGAL::Cartesian
 ```
 
 ## Common Usages 
-### [*Read (xyz, normal) *]()  
+### [ *Read (xyz, normal)* ]()  
 ```c++
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/IO/read_xyz_points.h>
