@@ -7,6 +7,7 @@ import torch
 x=torch.empty(size=(3,3)) # 3x3 matrix
 x=torch.empty((3,3))  	  # 3x3 matrix
 x=torch.rand(5,5) 		  # 2 dimension
+x=torch.randn(3,4)		  # 3x4 normal distributed matrix
 x=torch.ones(3,3,3) 	  # 3 dimension
 x=torch.ones(5,dtype=torch.double) 	# initialize and specify their types
 x=torch.tensor([2.5,0.1])  			# create tensor
