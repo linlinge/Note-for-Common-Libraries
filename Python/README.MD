@@ -18,7 +18,7 @@ np.linalg.inv(A)
 ```
 ## basic operation  
 ### list all file
-```
+```python
 def list_all_files(rootdir):
     import os
     _files = []
