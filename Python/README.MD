@@ -1,6 +1,6 @@
 # Package Installation
 ## matplotlib & ubuntu
-```
+```bash
 python -mpip install -U pip
 python -mpip install -U matplotlib
 apt-get install python3-matplotlib
