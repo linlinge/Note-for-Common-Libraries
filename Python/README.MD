@@ -35,3 +35,13 @@ def list_all_files(rootdir):
              _files.append(path)
     return _files
 ```
+### arguments management
+```python
+input=[]
+output=[]
+for i in range(len(sys.argv)):
+    if sys.argv[i]=="-i":
+        input=sys.argv[i+1]
+    elif sys.argv[i]=="-o":
+        output=sys.argv[i+1]
+```  
