@@ -17,7 +17,7 @@ o3d.io.write_point_cloud("8_Couple_copy.ply", ply)
 np.asarray(ply.colors)[0,:]=[255,0,0]
 
 # Get xyz
-cloud_xyz=np.asarray(ply.points  )
+cloud_xyz=np.asarray(ply.points)
 
 # Visualization
 o3d.visualization.draw_geometries([ply])  
