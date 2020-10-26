@@ -323,3 +323,21 @@ eig_vec.col(0) = eig_vec.col(1).cross(eig_vec.col(2));
 eig_vec.col(1) = eig_vec.col(2).cross(eig_vec.col(0));
 cout<<eig_val<<endl;
 ```
+
+### Random Color  
+```c++
+for(int i=0;i<clusters.size();i++){
+	  int rtmp=rand()%256;
+	  int gtmp=rand()%256;
+	  int btmp=rand()%256;
+	  for(int j=0;j<clusters[i].indices.size();j++){
+		  int itmp=clusters[i].indices[j];
+		  cloud_rgb->points[itmp].r=rtmp;
+		  cloud_rgb->points[itmp].g=gtmp;
+		  cloud_rgb->points[itmp].b=btmp;
+		  cloud_rgb->points[itmp].x=cloud->points[itmp].x;
+		  cloud_rgb->points[itmp].y=cloud->points[itmp].y;
+		  cloud_rgb->points[itmp].z=cloud->points[itmp].z;
+	  }
+  }
+```
