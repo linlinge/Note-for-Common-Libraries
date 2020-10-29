@@ -126,5 +126,11 @@ cout<<dat.ptr<double>(0)[0], dat.ptr<double>(1)[0], dat.ptr<double>(2)[0]<<endl;
 
 // Method 02
 cout<<dat.at<double>(0,0)<<endl;
+
+// RGB pixel access
+cout<<dat.at<cv::Vec3b>(0,0)[0]<<endl;
+cout<<dat.at<cv::Vec3b>(0,0)[1]<<endl;
+cout<<dat.at<cv::Vec3b>(0,0)[2]<<endl;
+
 ```
 
