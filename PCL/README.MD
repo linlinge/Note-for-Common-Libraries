@@ -5,8 +5,10 @@
 # sudo apt-get update
 // old version ubuntu
 # sudo apt-get install libpcl-all
-// ubuntu 18.04 
+// install (ubuntu 18.04 )
 # sudo apt-get install libpcl-dev
+// uninstall (ubuntu 18.04)
+# sudo apt-get purge libpcl-dev  
 ```
 
 
