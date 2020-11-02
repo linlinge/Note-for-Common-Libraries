@@ -1,3 +1,18 @@
+## Step 01: Preparation  
+### Dependencies
+```python
+pip install tensorflow-gpu==1.15
+sudo apt-get install python-pil python-numpy
+pip install --user jupyter
+pip install --user matplotlib
+pip install --user PrettyTable
+```
+### environment  
+```bash
+# From tensorflow/models/research/
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+```
+
 ## Step 01: convert images to tfrecord  
 ![avatar](fig/01_convert_images_to_tfrecord.png)
 ```python
