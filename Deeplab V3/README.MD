@@ -1,4 +1,4 @@
-## Step 01: Preparation  
+## Step 00: Preparation  
 ### Dependencies
 ```python
 pip install tensorflow-gpu==1.15
