@@ -1,4 +1,5 @@
-### python (str) -> c++ (string)
+### string
+![](https://latex.codecogs.com/gif.latex?python%20%5Cto%20c&plus;&plus;)
 python file
 ```python
 ll = ctypes.cdll.LoadLibrary
