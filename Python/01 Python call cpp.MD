@@ -1,3 +1,4 @@
+### python (str) -> c++ (string)
 python file
 ```python
 ll = ctypes.cdll.LoadLibrary
