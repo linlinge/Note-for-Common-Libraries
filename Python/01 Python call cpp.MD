@@ -1,5 +1,5 @@
 ### string
-** python → c++ **
+**python → c++**
 ```python
 # python script
 ll = ctypes.cdll.LoadLibrary
@@ -21,7 +21,7 @@ extern "C" string C2Str(char* s,int len)
 ```
 
 ### OpenCV Mat
-** python → c++ **
+**python → c++**
 ```python
 # python
 img=cv2.imread(path)
