@@ -20,7 +20,7 @@ extern "C" string C2Str(char* s,int len)
 }
 ```
 
-### OpenCV Mat
+### cv::Mat
 **python → c++**
 ```python
 # python
