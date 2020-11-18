@@ -35,3 +35,25 @@ extern "C" void writeMat(int rows, int cols, unsigned char* imgData)
   cv::imwrite("5.png",img);
 }
 ```
+**c++ → python**
+```python
+# python
+h=ctypes.c_int(0)
+w=ctypes.c_int(0)
+lib.Example_Mat_out.restype = ctypes.POINTER(ctypes.c_uint8)     
+ptr = lib.Example_Mat_out(ctypes.byref(h),ctypes.byref(w))
+img = np.array(np.fromiter(ptr, dtype=np.uint8, count=h.value*w.value*3))
+img = img.reshape(h.value,w.value,3)
+```
+```c++
+// c++
+extern "C" uchar*  Example_Mat_out(int* rows, int* cols)
+{
+  cv::Mat img=imread("/home/llg/workspace_cmake/SegOR/1.png");
+  *rows=img.rows;
+  *cols=img.cols;
+  uchar* buffer = (uchar*)malloc(sizeof(uchar)*img.rows*img.cols*3);
+  memcpy(buffer, img.data, img.rows*img.cols*3);
+  return buffer;
+}
+```
