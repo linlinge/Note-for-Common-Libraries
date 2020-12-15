@@ -3,7 +3,7 @@
 * cuda 10.2
 * vtk 8.2
 * pcl 1.11.1
-* g++ 7.5.0
+* gcc g++ 7.5.0
 * boost 1.65.1
 [ref1](https://blog.csdn.net/weixin_38907330/article/details/107231113) 
 
@@ -18,14 +18,10 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiv
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
-# deb-src [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-# deb-src [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
-
 ```
 
-## 1. 先安装好显卡驱动+cuda
+## 1. 先安装好 显卡驱动+cuda
 
 https://blog.csdn.net/yfy1127yfy/article/details/87891247
 
