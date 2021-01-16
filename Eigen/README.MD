@@ -34,6 +34,11 @@ int main()
 ```
 
 ## [Operation](https://eigen.tuxfamily.org/dox/group__TutorialMatrixArithmetic.html)
+### Eigen::Vector3d
+```c++
+Eigen::Vector3d a(1.0,2.0,3.0);
+```
+### 
 ```c++
 // Header
 #include <Eigen/Dense>
