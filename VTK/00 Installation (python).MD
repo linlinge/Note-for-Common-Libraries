@@ -7,34 +7,117 @@
 ```python
 import vtk
 
-# 1. 读取数据
-cube = vtk.vtkCubeSource()
-cube.Update()#记得加这句不加看不到模型
+class SliderObserver(object):
+    def __init__(self, Octree, polyData, renderer):
+        self.Octree = Octree
+        self.level = 0
+        self.polyData = polyData
+        self.renderer = renderer
+    
+    def __call__(self, caller, event):
+        self.level = vtk.vtkMath.Round(caller.GetRepresentation().GetValue())
+        self.Octree.GenerateRepresentation(self.level, self.polyData)
+        self.renderer.Render()
 
-# 2. 建图（将点拼接成立方体）
-cube_mapper = vtk.vtkPolyDataMapper()
-cube_mapper.SetInputData(cube.GetOutput())
+def OctreeVisualize(fileName):
+    '''
+    fileName:文件路径
+    该函数显示PLY模型的空间八叉树划分
+    '''
+    # PLY模型的读取
+    colors = vtk.vtkNamedColors()
+    plyReader = vtk.vtkPLYReader()
+    plyReader.SetFileName(fileName)
+    plyMapper = vtk.vtkPolyDataMapper()
+    plyMapper.SetInputConnection(plyReader.GetOutputPort())
+    plyReader.Update()
+    plyActor = vtk.vtkActor()
+    plyActor.SetMapper(plyMapper)
+    plyActor.GetProperty().SetInterpolationToFlat()
+    plyActor.GetProperty().SetRepresentationToPoints()
+    plyActor.GetProperty().SetColor(colors.GetColor3d("White"))
 
-# 3. 根据2创建执行单元
-cube_actor = vtk.vtkActor()
-cube_actor.SetMapper(cube_mapper)
-cube_actor.GetProperty().SetColor(1.0, 0.0, 0.0)
+    # 构建八叉树
+    octree = vtk.vtkOctreePointLocator()
+    octree.SetMaximumPointsPerRegion(5)
+    octree.SetDataSet(plyReader.GetOutput())
+    octree.BuildLocator()
 
-# 4. 渲染（将执行单元和背景组合在一起按照某个视角绘制）
-renderer = vtk.vtkRenderer()
-renderer.SetBackground(0.0, 0.0, 0.0)#背景只有一个所以是Set()
-renderer.AddActor(cube_actor)#因为actor有可能为多个所以是add()
+    polydata = vtk.vtkPolyData()
+    octree.GenerateRepresentation(0, polydata)
 
-# 5. 显示渲染窗口
-render_window = vtk.vtkRenderWindow()
-render_window.SetWindowName("My First Cube")
-render_window.SetSize(400,400)
-render_window.AddRenderer(renderer)# 渲染也会有可能有多个渲染把他们一起显示
+    octreeMapper = vtk.vtkPolyDataMapper()
+    octreeMapper.SetInputData(polydata)
 
-# 6. 创建交互控键（可以用鼠标拖来拖去看三维模型）
-interactor = vtk.vtkRenderWindowInteractor()
-interactor.SetRenderWindow(render_window)
-interactor.Initialize()
-render_window.Render()
-interactor.Start()
+    octreeActor = vtk.vtkActor()
+    octreeActor.SetMapper(octreeMapper)
+    octreeActor.GetProperty().SetInterpolationToFlat()
+    octreeActor.GetProperty().SetRepresentationToWireframe()
+    octreeActor.GetProperty().SetColor(colors.GetColor3d("SpringGreen"))
+
+    # 渲染器和窗口
+    renderer = vtk.vtkRenderer()
+    renderWindow = vtk.vtkRenderWindow()
+    renderWindow.AddRenderer(renderer)
+
+    # 交互器
+    renderWindowInteractor = vtk.vtkRenderWindowInteractor()
+    renderWindowInteractor.SetRenderWindow(renderWindow)
+
+    # 将模型加入场景中
+    renderer.AddActor(plyActor)
+    renderer.AddActor(octreeActor)
+    renderer.SetBackground(colors.GetColor3d("MidnightBlue"))
+
+    # 渲染一副图像（光照和相机自动创建）
+    renderWindow.SetWindowName("OctreeVisualize")
+    renderWindow.SetSize(600, 600)
+    renderWindow.Render()
+
+    # 创建设定八叉树划分细度的滑动条
+    sliderRep = vtk.vtkSliderRepresentation2D()
+    sliderRep.SetMinimumValue(0)
+    sliderRep.SetMaximumValue(octree.GetLevel())
+    sliderRep.SetValue(0)
+    sliderRep.SetTitleText("Level")
+    sliderRep.GetPoint1Coordinate().SetCoordinateSystemToNormalizedDisplay()
+    sliderRep.GetPoint1Coordinate().SetValue(.2, .2)
+    sliderRep.GetPoint2Coordinate().SetCoordinateSystemToNormalizedDisplay()
+    sliderRep.GetPoint2Coordinate().SetValue(.8, .2)
+    sliderRep.SetSliderLength(0.075)
+    sliderRep.SetSliderWidth(0.05)
+    sliderRep.SetEndCapLength(0.05)
+    sliderRep.GetTitleProperty().SetColor(colors.GetColor3d("Beige"))
+    sliderRep.GetCapProperty().SetColor(colors.GetColor3d("MistyRose"))
+    sliderRep.GetSliderProperty().SetColor(colors.GetColor3d("LightBlue"))
+    sliderRep.GetSelectedProperty().SetColor(colors.GetColor3d("Violet"))
+
+    sliderWidget = vtk.vtkSliderWidget()
+    sliderWidget.SetInteractor(renderWindowInteractor)
+    sliderWidget.SetRepresentation(sliderRep)
+    sliderWidget.SetAnimationModeToAnimate()
+    sliderWidget.EnabledOn()
+
+    # 给滑动条添加观察者
+    callback = SliderObserver(octree, polydata, renderer)
+    callback.Octree = octree
+    callback.PolyData = polydata
+    callback.Renderer = renderer
+
+    sliderWidget.AddObserver('InteractionEvent', callback)
+
+    renderWindowInteractor.Initialize()
+    renderWindow.Render()
+
+    renderWindowInteractor.Start()
+
+if __name__=='__main__':
+    fileName = "/home/llg/dataset_paper/4_Mimosa.ply"
+    OctreeVisualize(fileName)
+```
+
+## Code Unit  
+### load ply 
+```python
+
 ```
