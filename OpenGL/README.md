@@ -1,4 +1,10 @@
 #  OpenGL Installation and Configuration   
+## ubuntu & c++
+> Fatal error: gl/glut.h: no such file or directory
+```bash
+sudo apt-get install freeglut3-dev
+```
+
 ## windows7 & vs2017
 ### required
 glut and glew
